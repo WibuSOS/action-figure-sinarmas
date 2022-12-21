@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { API_URL } from '../../const'
+import { FIGURES_URL, FIGURES_DIR } from '../../const'
 import './ItemList.css'
 
 export default class ItemList extends Component {
@@ -11,24 +11,22 @@ export default class ItemList extends Component {
 
 	componentDidMount() {
 		axios
-			.get(API_URL + "/figures")
+			.get(FIGURES_URL)
 			.then(res => {
-				let items = res.data.figures;
+				let items = res.data;
 				this.setState({ items });
 			})
-			.catch(error => {
-				console.log(error);
-			});
+			.catch(error => console.log(error));
 	}
 
 	render() {
 		let itemList = this.state.items.map(
-			item => {
+			item => (
 				<div key={item.id} className='figure-item'>
-					<img src={item.source} />
+					<img src={`${FIGURES_DIR}/${item.source}`} />
 					<button type='button'>add to cart</button>
 				</div>
-			}
+			)
 		);
 
 		return (
