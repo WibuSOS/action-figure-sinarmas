@@ -55,7 +55,8 @@
 			"name": "Juliana Manurung",
 			"email": "juliana@pega.com",
 			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
-			"source": "profile1.png"
+			"source": "profile1.png",
+			"cart": []
 		}
 	]
 }
