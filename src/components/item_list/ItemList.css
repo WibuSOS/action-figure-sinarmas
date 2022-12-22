@@ -1,0 +1,7 @@
+.figure-list {
+	box-sizing: border-box;
+}
+
+.figure-item {
+	image-resolution: 1366*768;
+}
