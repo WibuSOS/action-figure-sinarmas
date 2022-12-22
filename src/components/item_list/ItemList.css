@@ -1,0 +1,7 @@
+.figure-list {
+	box-sizing: border-box;
+}
+
+.figure-item {
+	width: 15rem;
+}
