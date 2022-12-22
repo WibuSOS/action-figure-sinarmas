@@ -4,4 +4,8 @@
 
 .figure-item {
 	width: 15rem;
+	min-height: 30rem;
+}
+.figure-title {
+	min-height: 5rem;
 }
