@@ -1,16 +1,13 @@
-import logo from './logo.svg';
+
 import './App.css';
+import ItemList from './components/item_list/ItemList';
 import Header from './components/Header'
-import AlamatComponent from './components/AlamatComponent';
 function App() {
   return (
-    <>
+    <div className="App">
       <Header/>
-      <div className='w-50'>
-        <AlamatComponent/>
-      </div>
-    </>
-    
+      <main><ItemList /></main>
+    </div>
   );
 }
 
