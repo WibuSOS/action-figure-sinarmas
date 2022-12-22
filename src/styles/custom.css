@@ -1,0 +1,4 @@
+.remove-border:focus{
+    /* margin:0 0 10px 0; */
+    outline: none !important;
+}

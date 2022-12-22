@@ -57,6 +57,14 @@
 			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
 			"source": "profile1.png",
 			"cart": []
+		},
+		{
+			"id": 2,
+			"name": "Julianto Manurung",
+			"email": "julianto@pega.com",
+			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
+			"source": "profile1.png",
+			"cart": []
 		}
 	]
 }
