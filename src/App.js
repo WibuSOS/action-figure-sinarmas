@@ -14,6 +14,7 @@ import RegisterAddress from './pages/Register/RegisterAddress';
 import RegisterPayment from './pages/Register/RegisterPayment';
 import RegisterSummary from './pages/Register/RegisterSummary';
 
+
 function App() {
   return (
     <BrowserRouter>
@@ -23,6 +24,7 @@ function App() {
         <Route  path="/registerAddress" element={<RegisterAddress/>} exact/>
         <Route  path="/registerPayment" element={<RegisterPayment/>} exact/>
         <Route  path="/registerSummary" element={<RegisterSummary/>} exact/>
+        <Route  path="/" element={<ItemList/>} exact/>
       </Routes>
     </BrowserRouter>
   );
