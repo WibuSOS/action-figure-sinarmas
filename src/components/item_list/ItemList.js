@@ -4,7 +4,6 @@ import { FIGURES_URL, FIGURES_DIR } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
-import Header from '../Header';
 
 export default class ItemList extends Component {
 	constructor(props) {
