@@ -33,7 +33,7 @@ export default class ItemList extends Component {
 					<Card className='figure-item mb-3'>
 						<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} />
 						<Card.Body>
-							<Card.Title className='figure-title' >{item.title}</Card.Title>
+							<Card.Title className='figure-title'>{item.title}</Card.Title>
 							<Card.Subtitle className='mb-2 text-muted'>{`Rp${item.price.toLocaleString('id')}`}</Card.Subtitle>
 							<Card.Text >
 								{`By ${item.sculptor}`}
@@ -46,15 +46,12 @@ export default class ItemList extends Component {
 		);
 
 		return (
-			<div>
-			
 			<Container className='figure-list mt-3'>
 				<Row>
 					{itemList}
 				</Row>
 				<ItemTab itemList={itemList} />
 			</Container>
-			</div>
 		)
 	}
 }

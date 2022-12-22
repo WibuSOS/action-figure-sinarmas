@@ -1,5 +1,4 @@
 .gradient-custom {
-  
     background: #6a11cb;
     background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
     background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
@@ -8,7 +7,7 @@
 .col1 {
     box-sizing: border-box;
 
-    position: absolute;
+    position: fixed;
     width: 60%;
     height: 45%;
     left: 5%;
@@ -22,7 +21,7 @@
 }
 
 .col2 {
-    position: absolute;
+    position: fixed;
     height: 45%;
     width: 20%;
     top: 18%;
@@ -34,7 +33,7 @@
     border: 1px solid #000000;
 }
 
-.Header{
+.Header {
     margin: auto;
     width: 90%;
     height: 15%;
@@ -42,14 +41,15 @@
     justify-content: space-between;
     align-items: center;
 }
-.Heading{
+
+.Heading {
     font-size: 20px;
     font-family: 'Open Sans';
     font-weight: 700;
     color: #2F3841;
 }
 
-.Action{
+.Action {
     font-size: 14px;
     font-family: 'Open Sans';
     font-weight: 600;
@@ -58,7 +58,7 @@
     border-bottom: 1px solid #E44C4C;
 }
 
-.Cart-Items{
+.Cart-Items {
     margin: auto;
     width: 90%;
     height: 30%;
@@ -66,16 +66,17 @@
     justify-content: space-between;
     align-items: center;
 }
-.image-box{
+
+.image-box {
     width: 15%;
     text-align: center;
 }
 
-.about{
+.about {
     height: 100%;
 }
 
-.title{
+.title {
     padding-top: 5px;
     line-height: 10px;
     font-size: 32px;
@@ -84,11 +85,9 @@
     color: #202020;
 }
 
-.subtitle{
+.subtitle {
     line-height: 10px;
     font-size: 18px;
     font-family: 'Open Sans';
     font-weight: 600;
 }
-
-
