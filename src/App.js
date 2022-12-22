@@ -2,12 +2,16 @@
 import './App.css';
 import ItemList from './components/item_list/ItemList';
 import Header from './components/Header'
+import Transaction from './pages/Transaction';
 function App() {
   return (
-    <div className="App">
-      <Header/>
-      <main><ItemList /></main>
-    </div>
+    <>
+    <Header/>
+      <Transaction/>
+    </>
+    // <div className="App">
+      
+    // </div>
   );
 }
 
