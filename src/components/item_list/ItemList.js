@@ -3,6 +3,7 @@ import axios from 'axios'
 import { FIGURES_URL, FIGURES_DIR } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { ItemTab } from '../item_tab/ItemTab';
 
 export default class ItemList extends Component {
 	constructor(props) {
@@ -48,7 +49,8 @@ export default class ItemList extends Component {
 				<Row>
 					{itemList}
 				</Row>
+				<ItemTab itemList={itemList} />
 			</Container>
-		);
+		)
 	}
 }
