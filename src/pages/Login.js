@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios'
 import { API_URL, LOGIN_URL } from '../const'
 import swal from "sweetalert";
+import Header from '../components/Header';
 
 export default class Login extends Component {
     constructor(props) {
@@ -68,8 +69,10 @@ export default class Login extends Component {
 
     return (
     <form >
-    <div style={{marginTop:"70px"}}>       
+    <div>  
+  
         <div className="container">
+           
             <div className='row justify-content-center' >
                 <div className='col-md-6' >
                     <div className='card p-4' style={{backgroundColor: "#F5F5F5"}}>

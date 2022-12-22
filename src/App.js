@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+
 import './App.css';
 import ItemList from './components/item_list/ItemList';
 
@@ -13,10 +13,14 @@ import Register from './pages/Register';
 import RegisterAddress from './pages/Register/RegisterAddress';
 import RegisterPayment from './pages/Register/RegisterPayment';
 import RegisterSummary from './pages/Register/RegisterSummary';
+import Header from './components/Header';
 
 
 function App() {
   return (
+    <div>
+    <Header/>
+
     <BrowserRouter>
       <Routes>
         <Route  path="/login" element={<Login/>} exact/>
@@ -27,6 +31,7 @@ function App() {
         <Route  path="/" element={<ItemList/>} exact/>
       </Routes>
     </BrowserRouter>
+    </div>
   );
 } 
 
