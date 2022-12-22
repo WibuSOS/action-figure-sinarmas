@@ -29,7 +29,7 @@ export default class ItemList extends Component {
 		let itemList = this.state.items.map(
 			item => (
 				<Col key={item.id} sm={6} md={4} lg={3}>
-					<Card className='figure-item'>
+					<Card className='figure-item mb-3'>
 						<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} />
 						<Card.Body>
 							<Card.Title>{item.title}</Card.Title>
