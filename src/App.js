@@ -16,7 +16,6 @@ import RegisterSummary from './pages/Register/RegisterSummary';
 
 function App() {
   return (
-<<<<<<< HEAD
     <BrowserRouter>
       <Routes>
         <Route  path="/login" element={<Login/>} exact/>
@@ -26,11 +25,6 @@ function App() {
         <Route  path="/registerSummary" element={<RegisterSummary/>} exact/>
       </Routes>
     </BrowserRouter>
-=======
-    <div className="App">
-      <main><ItemList /></main>
-    </div>
->>>>>>> master
   );
 } 
 
