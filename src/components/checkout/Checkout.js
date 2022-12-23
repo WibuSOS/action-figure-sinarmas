@@ -4,6 +4,8 @@ import { Col, Container, Row } from 'react-bootstrap'
 import { CART_URL, PROFILES_URL } from '../../const'
 import './Checkout.css'
 import DeliveryDetails from './DeliveryDetails'
+import CartList from '../shopingcart/CartList'
+import TotalPrice from '../shopingcart/TotalPrice'
 
 export default class Checkout extends Component {
 	constructor(props) {
@@ -13,9 +15,9 @@ export default class Checkout extends Component {
 
 	componentDidMount() {
 		axios
-			.get(`${PROFILES_URL}?name=${localStorage.getItem('name')}`)
+			.get(`${PROFILES_URL}/${localStorage.getItem('id')}`)
 			.then(res => {
-				let profile = res.data[0];
+				let profile = res.data;
 				this.setState({ profile });
 			})
 			.catch(error => console.log(error));
@@ -41,10 +43,12 @@ export default class Checkout extends Component {
 						</Row>
 						<Row>
 							<Col>
+								<CartList items={this.state.cart} />
 							</Col>
 						</Row>
 					</Col>
 					<Col lg={4} className='mt-3 mt-lg-0'>
+						<TotalPrice />
 					</Col>
 				</Row>
 			</Container>
