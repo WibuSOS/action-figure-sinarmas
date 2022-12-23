@@ -4,6 +4,30 @@ import './../styles/custom.css'
 import { ICONS } from './../const'
 const url = "http://localhost:3006/"
 export default function Header() {
+    if(localStorage.getItem('name')==null)
+    {
+        return(
+            
+            <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#FFB13D", }}>
+            <div className="container-fluid">
+                <button className="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+                <a className="navbar-brand ms-5" href="#id"><img src={ICONS + "profile1.png"} alt={"dd"} style={{ width: "40px", height: "40px", marginRight: "15px" }} /> Bandai.Com</a>
+                <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+                    <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                        
+                        <li className="nav-item">
+                            <a className="nav-link" href="#w" style={{ padding: "2px 0 0 0" }}><img src={ICONS + "user02.png"} alt={"dd"} style={{ width: "40px", height: "40px" }} /></a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </nav>
+        )
+    }
+    else{
     return (
         <nav className="navbar navbar-expand-lg" style={{ backgroundColor: "#FFB13D", }}>
             <div className="container-fluid">
@@ -39,4 +63,5 @@ export default function Header() {
             </div>
         </nav>
     )
+    }
 }

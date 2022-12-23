@@ -17,17 +17,6 @@ import Checkout from './components/checkout/Checkout';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App><ItemList /></App>} exact />
-        <Route path="/login" element={<App><Login /></App>} exact />
-        <Route path="/register" element={<App><Register /></App>} exact />
-        <Route path="/registerAddress" element={<App><RegisterAddress /></App>} exact />
-        <Route path="/registerPayment" element={<App><RegisterPayment /></App>} exact />
-        <Route path="/registerSummary" element={<App><RegisterSummary /></App>} exact />
-        <Route path="/cart" element={<App><ShopingCart /></App>} exact />
-        <Route path="/checkout" element={<App><Checkout /></App>} exact />
-      </Routes>
-    </BrowserRouter>
+    <App />
   </React.StrictMode>
 );

@@ -1,98 +1,171 @@
 {
-	"figures": [
-		{
-			"id": 1,
-			"title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-			"sculptor": "APEX",
-			"price": 2650000,
-			"quantity": 100,
-			"source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-		},
-		{
-			"id": 2,
-			"title": "Nendoroid Yor Forger - SPY x FAMILY",
-			"sculptor": "Good Smile Company",
-			"price": 650000,
-			"quantity": 100,
-			"source": "nendoroid-yor-forger-spy-x-family.jpg"
-		},
-		{
-			"id": 3,
-			"title": "Nendoroid Yuji Itadori",
-			"sculptor": "Good Smile Company",
-			"price": 800000,
-			"quantity": 100,
-			"source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
-		},
-		{
-			"id": 4,
-			"title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-			"sculptor": "Mihoyo",
-			"price": 580000,
-			"quantity": 100,
-			"source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-		},
-		{
-			"id": 5,
-			"title": "Nendoroid Denji - Chainsaw Man",
-			"sculptor": "Good Smile Company",
-			"price": 720000,
-			"quantity": 100,
-			"source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
-		},
-		{
-			"id": 6,
-			"title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
-			"sculptor": "Good Smile Company",
-			"price": 720000,
-			"quantity": 100,
-			"source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
-		}
-	],
-	"cart": [
-		{
-			"id_person": 1,
-			"title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-			"sculptor": "APEX",
-			"price": 2650000,
-			"source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-		},
-		{
-			"id_person": 1,
-			"title": "Nendoroid Yor Forger - SPY x FAMILY",
-			"sculptor": "Good Smile Company",
-			"price": 650000,
-			"source": "nendoroid-yor-forger-spy-x-family.jpg"
-		},
-		{
-			"id_person": 2,
-			"title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-			"sculptor": "APEX",
-			"price": 2650000,
-			"source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-		},
-		{
-			"id_person": 2,
-			"title": "Nendoroid Yor Forger - SPY x FAMILY",
-			"sculptor": "Good Smile Company",
-			"price": 650000,
-			"source": "nendoroid-yor-forger-spy-x-family.jpg"
-		}
-	],
-	"profiles": [
-		{
-			"id": 1,
-			"name": "Juliana Manurung",
-			"email": "juliana@pega.com",
-			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
-			"source": "profile1.png"
-		},
-		{
-			"id": 2,
-			"name": "Julianto Manurung",
-			"email": "julianto@pega.com",
-			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
-			"source": "profile1.png"
-		}
-	]
+  "figures": [
+    {
+      "id": 1,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "quantity": 100,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Nendoroid Yor Forger - SPY x FAMILY",
+      "sculptor": "Good Smile Company",
+      "price": 650000,
+      "quantity": 100,
+      "source": "nendoroid-yor-forger-spy-x-family.jpg"
+    },
+    {
+      "id": 3,
+      "title": "Nendoroid Yuji Itadori",
+      "sculptor": "Good Smile Company",
+      "price": 800000,
+      "quantity": 100,
+      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "quantity": 100,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Nendoroid Denji - Chainsaw Man",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "quantiy": 100,
+      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+    },
+    {
+      "id": 6,
+      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "quantity": 100,
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+    }
+  ],
+  "bookmark": [
+    {
+      "id": 4,
+      "id_persons": 1,
+      "id_item": 4,
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "quantity": 100,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    },
+    {
+      "id": 5,
+      "id_persons": 1,
+      "id_item": 2,
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "quantity": 100,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "id_item": 4,
+      "id_persons": 1,
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "jumlah_barang": 1,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    },
+    {
+      "id": 2,
+      "id_item": 4,
+      "id_persons": "1",
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "jumlah_barang": 1,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    },
+    {
+      "id": 3,
+      "id_item": 2,
+      "id_persons": "1",
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "jumlah_barang": 1,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    },
+    {
+      "id": 4,
+      "id_item": 4,
+      "id_persons": "1",
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "jumlah_barang": 1,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+    }
+  ],
+  "profiles": [
+    {
+      "id": 1,
+      "name": "Juliana Manurung",
+      "password": "123456",
+      "email": "juliana@pega.com",
+      "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
+      "source": "profile1.png",
+      "bookmark": [
+        {
+          "id": 6,
+          "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+          "sculptor": "Good Smile Company",
+          "price": 720000,
+          "quantity": 100,
+          "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+        },
+        {
+          "id": 5,
+          "title": "Nendoroid Denji - Chainsaw Man",
+          "sculptor": "Good Smile Company",
+          "price": 720000,
+          "quantity": 100,
+          "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+        },
+        {
+          "id": 3,
+          "title": "Nendoroid Yuji Itadori",
+          "sculptor": "Good Smile Company",
+          "price": 800000,
+          "quantity": 100,
+          "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Julianto Manurung",
+      "password": "123456",
+      "email": "julianto@pega.com",
+      "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
+      "source": "profile1.png",
+      "cart": [],
+      "bookmark": [
+        {
+          "id": 6,
+          "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+          "sculptor": "Good Smile Company",
+          "price": 720000,
+          "quantity": 100,
+          "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+        }
+      ]
+    }
+  ]
 }
