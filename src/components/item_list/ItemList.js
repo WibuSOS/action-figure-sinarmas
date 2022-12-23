@@ -4,7 +4,6 @@ import { FIGURES_URL, FIGURES_DIR } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
-import Header from '../Header';
 
 export default class ItemList extends Component {
 	constructor(props) {
@@ -20,12 +19,16 @@ export default class ItemList extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
-	}
 
+	}
 	addToCart(itemId) {
 		console.log(itemId);
 	}
-
+	logout(){
+		localStorage.removeItem('name');
+		localStorage.removeItem('id');
+		window.location.href="/";
+	}
 	render() {
 		let itemList = this.state.items.map(
 			item => (
@@ -33,7 +36,7 @@ export default class ItemList extends Component {
 					<Card className='figure-item mb-3'>
 						<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} />
 						<Card.Body>
-							<Card.Title className='figure-title' >{item.title}</Card.Title>
+							<Card.Title className='figure-title'>{item.title}</Card.Title>
 							<Card.Subtitle className='mb-2 text-muted'>{`Rp${item.price.toLocaleString('id')}`}</Card.Subtitle>
 							<Card.Text >
 								{`By ${item.sculptor}`}
@@ -46,15 +49,13 @@ export default class ItemList extends Component {
 		);
 
 		return (
-			<div>
-			
 			<Container className='figure-list mt-3'>
+				<Button onClick={() => this.logout()}>Log Out</Button>
 				<Row>
 					{itemList}
 				</Row>
 				<ItemTab itemList={itemList} />
 			</Container>
-			</div>
 		)
 	}
 }
