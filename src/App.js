@@ -4,8 +4,12 @@ import Header from './components/Header';
 function App(props) {
   return (
     <div>
-      <Header />
-      {props.children}
+      <header>
+        <Header />
+      </header>
+      <main>
+        {props.children}
+      </main>
     </div>
   );
 }
