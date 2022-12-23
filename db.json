@@ -66,5 +66,30 @@
 			"source": "profile1.png",
 			"cart": []
 		}
+	],
+	"belanja":[
+		{
+			"id":1,
+			"userId":1,
+			"paycode":"33333",
+			"orderID":"dadasd",
+			"tanggal":"20220903",
+			"jumlah":"2",
+			"detail":[
+				{
+					"nama":"figureA",
+					"jumlah":"2",
+					"harga":10000,
+					"gambar":"flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+				},
+				{
+					"nama":"figureb",
+					"jumlah":"3",
+					"harga":10000,
+					"gambar":"flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+				}
+			],
+			"status":3
+		}
 	]
 }

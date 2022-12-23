@@ -1,10 +1,46 @@
 import React, { Component } from 'react'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import './ShopingCart.css'
+import {IMAGES_CATALOG} from './../../const'
 
 export default class ShopingCart extends Component {
     render() {
         return (
+            // <div className='container mt-4'>
+            //     <div className="p-2 rounded border w-100">
+            //         <h2>Shooping cart</h2>
+            //         <div style={{borderTop:"1px solid black"}}>
+
+            //         </div>
+            //         <div className='py-3 px-2'>
+            //             <div className='row'>
+            //                 <div className="col-md-2">
+            //                 <img src={IMAGES_CATALOG+"nendoroid-levi-shingeki-no-kyojin-re-release.jpg"} className="img-fluid" alt="" />
+            //                 </div>
+            //                 <div className="col-md-2">
+            //                     <p className='fw-bold'>Figure</p>
+            //                     <p>Harga</p>
+            //                 </div>
+            //                 <div className="col-md-2">
+            //                     <p className='fw-bold'>Figure</p>
+            //                     <p>Harga</p>
+            //                 </div>
+            //                 <div className="col-md-2">
+            //                     <p className='fw-bold'>Quantity</p>
+            //                     <div>
+            //                     {/* <div> < </div><p> </p><p>""</p> */}
+            //                     </div>
+                                
+            //                 </div>
+            //                 <div className="col-md-4">
+            //                     <p className='fw-bold'>SubTotal</p>
+            //                     <p>Harga</p>
+            //                 </div>
+                            
+            //             </div>
+            //         </div>
+            //     </div>
+            // </div>
             <div className="row">
                 <div className="col-12 col-md-8">
                     <div className='col1'>
