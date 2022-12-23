@@ -9,31 +9,33 @@ import RegisterPayment from './pages/Register/RegisterPayment';
 import RegisterSummary from './pages/Register/RegisterSummary';
 import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
-function App(props) {
-  if(localStorage.getItem('name')==null)
-  {
-  return (
- <BrowserRouter>
-  <Header/>
-          <Routes>
-              <Route  path="/" element={<Login/>} exact/>
-              <Route  path="/register" element={<Register/>} exact/>
-              <Route  path="/registerAddress" element={<RegisterAddress />} exact />
-              <Route path="/registerPayment" element={<RegisterPayment />} exact />
-              <Route path="/registerSummary" element={<RegisterSummary />} exact />
-          </Routes>    
-    </BrowserRouter>
-  )
-  }
-  else{
+import Checkout from './components/checkout/Checkout';
+
+function App() {
+  if (localStorage.getItem('name') == null) {
     return (
       <BrowserRouter>
-        <Header/>
+        <Header />
         <Routes>
-            <Route  path="/" element={<ItemList/>} exact/>
-            <Route  path="/bookmark" element={<Bookmark/>} exact/>
-            <Route  path="/cart" element={<ShopingCart/>} exact/>
-        </Routes>    
+          <Route path="/" element={<Login />} exact />
+          <Route path="/register" element={<Register />} exact />
+          <Route path="/registerAddress" element={<RegisterAddress />} exact />
+          <Route path="/registerPayment" element={<RegisterPayment />} exact />
+          <Route path="/registerSummary" element={<RegisterSummary />} exact />
+        </Routes>
+      </BrowserRouter>
+    )
+  }
+  else {
+    return (
+      <BrowserRouter>
+        <Header />
+        <Routes>
+          <Route path="/" element={<ItemList />} exact />
+          <Route path="/bookmark" element={<Bookmark />} exact />
+          <Route path="/cart" element={<ShopingCart />} exact />
+          <Route path="/checkout" element={<Checkout />} exact />
+        </Routes>
       </BrowserRouter>
     )
   }

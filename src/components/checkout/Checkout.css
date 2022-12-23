@@ -1,0 +1,12 @@
+.checkout {
+	box-sizing: border-box;
+}
+
+.delivery-details-card {
+	min-height: 12rem;
+	box-shadow: 0px 25px 40px #00000033;
+}
+
+.payment-method-label {
+	font-weight: 500;
+}

@@ -12,10 +12,11 @@ import RegisterPayment from './pages/Register/RegisterPayment';
 import RegisterSummary from './pages/Register/RegisterSummary';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import ItemList from './components/item_list/ItemList';
+import Checkout from './components/checkout/Checkout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-  <App />
-</React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
