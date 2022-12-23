@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, Col, Container, Row } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import './ShopingCart.css'
 
 export default class ShopingCart extends Component {

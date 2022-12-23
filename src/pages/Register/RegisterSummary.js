@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button,Image } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 export default class RegisterSummary extends Component {
   render() {
@@ -113,8 +113,8 @@ export default class RegisterSummary extends Component {
                                 </div>
                                 
                                 <div className='d-flex justify-content-around' style={{marginTop:"25px"}}>
-                                    <Button variant="danger" style={{minWidth:"75px"}} as={Link} to="/login">Cancel</Button>{' '}
-                                    <Button variant="success" style={{minWidth:"75px"}} as={Link} to="/login">OK </Button>{' '}
+                                    <Button variant="danger" style={{minWidth:"75px"}} as={Link} to="/">Cancel</Button>{' '}
+                                    <Button variant="success" style={{minWidth:"75px"}} as={Link} to="/">OK </Button>{' '}
                                 </div>
 
                             </div>

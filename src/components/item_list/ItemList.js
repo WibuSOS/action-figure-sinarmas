@@ -19,12 +19,16 @@ export default class ItemList extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
-	}
 
+	}
 	addToCart(itemId) {
 		console.log(itemId);
 	}
-
+	logout(){
+		localStorage.removeItem('name');
+		localStorage.removeItem('id');
+		window.location.href="/";
+	}
 	render() {
 		let itemList = this.state.items.map(
 			item => (
@@ -46,6 +50,7 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
+				<Button onClick={() => this.logout()}>Log Out</Button>
 				<Row>
 					{itemList}
 				</Row>
