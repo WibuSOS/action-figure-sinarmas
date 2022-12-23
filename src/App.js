@@ -1,17 +1,12 @@
-
 import './App.css';
-import ItemList from './components/item_list/ItemList';
-import Header from './components/Header'
-import Transaction from './pages/Transaction';
-function App() {
+import Header from './components/Header';
+
+function App(props) {
   return (
-    <>
-    <Header/>
-      <Transaction/>
-    </>
-    // <div className="App">
-      
-    // </div>
+    <div>
+      <Header />
+      {props.children}
+    </div>
   );
 }
 
