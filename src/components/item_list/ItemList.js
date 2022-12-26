@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_URL, FIGURES_DIR, API_URL } from '../../const'
+import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
-
 export default class ItemList extends Component {
 	constructor(props) {
 		super(props);
@@ -71,7 +70,9 @@ export default class ItemList extends Component {
 							<Card.Text >
 								{`By ${item.sculptor}`}
 							</Card.Text>
+							
 							<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							
 						</Card.Body>
 					</Card>
 				</Col>

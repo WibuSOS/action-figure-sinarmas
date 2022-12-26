@@ -2,6 +2,7 @@ import React from 'react'
 // import {} from 'react-'
 import {useNavigate } from 'react-router-dom'
 import './../styles/custom.css'
+import { Button } from 'react-bootstrap'
 // import
 import { ICONS } from './../const'
 const url = "http://localhost:3006/"
@@ -51,13 +52,13 @@ export default function Header() {
                         {
                             url !== "" && <>
                                 <li className="nav-item">
-                                    <a className="nav-link" aria-current="page" href='/#' onClick={()=>changeUrl('/cart')}><img src={ICONS + "shopping-cart-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px", }} /></a>
+                                <Button className="nav-link" aria-current="page" onClick={()=>changeUrl('/cart')} style={{ border:"none",backgroundColor: "#FFB13D" }}><img src={ICONS + "shopping-cart-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px", }} /></Button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/#" onClick={()=>changeUrl('/history')}><img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px" }} /></a>
+                                <Button style={{ border:"none",backgroundColor: "#FFB13D" }} className="nav-link"  onClick={()=>changeUrl('/history')}><img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px" }} /></Button>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="/#" onClick={()=>changeUrl('/bookmark')}><img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px", }} /></a>
+                                <Button style={{ border:"none",backgroundColor: "#FFB13D" }} className="nav-link" onClick={()=>changeUrl('/bookmark')}><img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "28px", height: "28px", }} /></Button>
                                 </li>
                             </>
                         }
