@@ -73,37 +73,17 @@
       "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     },
     {
-      "id": 2,
-      "id_item": 4,
-      "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-    },
-    {
       "id": 3,
       "id_item": 2,
       "id_persons": "1",
       "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
       "sculptor": "Mihoyo",
       "price": 580000,
-      "jumlah_barang": 1,
+      "jumlah_barang": 3,
       "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     },
     {
       "id": 4,
-      "id_item": 4,
-      "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-    },
-    {
-      "id": 5,
       "id_item": 4,
       "id_persons": "1",
       "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
@@ -119,7 +99,7 @@
       "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
       "sculptor": "Mihoyo",
       "price": 580000,
-      "jumlah_barang": 1,
+      "jumlah_barang": 3,
       "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     }
   ],
