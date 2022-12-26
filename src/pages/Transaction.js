@@ -7,31 +7,32 @@ export default function Transaction() {
     const [tab, setTab] = useState(1)
     const [data, setData] = useState([])
     useEffect(()=>{
+        const getData = async()=>{
+            try{
+                let find="userId=1"
+                if(tab===1){
+                    find+=("&status=1")
+                }else if(tab===2){
+                    find+=("&status=2")
+                }
+                else if(tab===3){
+                    find+=("&status=3")
+                }else if(tab===4){
+                    find+=("&status=4")
+                }else if(tab===5){
+                    find+=("&status=5")
+                }
+                const res = await axios.get(API_URL+"/history?"+find)
+                setData(res.data)
+            }catch(err){
+    
+            }
+            
+        }
         getData()
     }, [tab ] )
 
-    const getData = async()=>{
-        try{
-            let find="userId=1"
-            if(tab===1){
-                find+=("&status=1")
-            }else if(tab===2){
-                find+=("&status=2")
-            }
-            else if(tab===3){
-                find+=("&status=3")
-            }else if(tab===4){
-                find+=("&status=4")
-            }else if(tab===5){
-                find+=("&status=5")
-            }
-            const res = await axios.get(API_URL+"/belanja?"+find)
-            setData(res.data)
-        }catch(err){
-
-        }
-        
-    }
+    
     const status=(data)=>{
         if(data===1){
             return "Await Payment"

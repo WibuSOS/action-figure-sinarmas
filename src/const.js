@@ -2,6 +2,8 @@
 const API_URL = "http://localhost:5006";
 const LOGIN_URL = `${API_URL}/profiles`;
 const FIGURES_URL = `${API_URL}/figures`;
+const PROFILES_URL = `${API_URL}/profiles`;
+const CART_URL = `${API_URL}/cart`;
 
 // DIRECTORIES
 const ASSETS_DIR = "/assets";
@@ -15,4 +17,5 @@ const RUPIAH = (number)=>{
       currency: "IDR"
     }).format(number);
 }
-export { API_URL, FIGURES_URL, ASSETS_DIR, FIGURES_DIR, ICONS, IMAGES_CATALOG, RUPIAH }
+
+export { API_URL, FIGURES_URL, PROFILES_URL, CART_URL, ASSETS_DIR, FIGURES_DIR, LOGIN_URL, ICONS, IMAGES_CATALOG, RUPIAH }
