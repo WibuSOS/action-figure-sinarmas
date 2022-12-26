@@ -8,19 +8,19 @@ import TotalPrice from './TotalPrice'
 
 export default class ShopingCart extends Component {
     constructor(props) {
-		super(props);
-		this.state = { items: [] };
-	}
+        super(props);
+        this.state = { items: [], view: 'cart', proceedBtn: 'Checkout' };
+    }
 
-	componentDidMount() {
-		axios
-			.get(FIGURES_URL)
-			.then(res => {
-				let items = res.data;
-				this.setState({ items });
-			})
-			.catch(error => console.log(error));
-	}
+    componentDidMount() {
+        axios
+            .get(FIGURES_URL)
+            .then(res => {
+                let items = res.data;
+                this.setState({ items });
+            })
+            .catch(error => console.log(error));
+    }
 
     render() {
         return (
@@ -33,12 +33,10 @@ export default class ShopingCart extends Component {
                             </Col>
                         </Row>
                     </Col>
-
                     <Col lg={4} className='mt-3 mt-lg-0'>
-                        <TotalPrice />
+                        <TotalPrice items={this.state.items} view={this.state.view} proceedBtn={this.state.proceedBtn} />
                     </Col>
                 </Row>
-
             </Container>
         )
     }

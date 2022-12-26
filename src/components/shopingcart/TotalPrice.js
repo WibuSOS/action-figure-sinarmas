@@ -30,7 +30,8 @@ export default function TotalPrice({ items, view, proceedBtn }) {
                     <Col className="col-6">{`Rp${finalPrice.toLocaleString('id')}`}</Col>
                 </Row>
                 <Row className='text-center mx-2 pt-5'>
-                    <Link to='/history' className='btn btn-warning'>{proceedBtn}</Link>
+                    {view === 'cart' && <Link to='/checkout' className='btn btn-warning'>{proceedBtn}</Link>}
+                    {view === 'checkout' && <Link to='/history' className='btn btn-warning'>{proceedBtn}</Link>}
                 </Row>
             </Card.Body>
         </Card >
