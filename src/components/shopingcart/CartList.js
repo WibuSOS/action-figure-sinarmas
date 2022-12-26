@@ -3,7 +3,7 @@ import { Button, Card, Col, Row } from 'react-bootstrap'
 import './ShopingCart.css'
 import { FIGURES_DIR, ICONS } from '../../const'
 
-export default function CartList({ items, change }) {
+export default function CartList({ items, view, change }) {
 
     // const []=useState(items)
     const deleteCart = (id) => {
@@ -45,25 +45,23 @@ export default function CartList({ items, change }) {
                 </Col>
                 <Col className="col-sm-4">
                     <p className='underline' >{item.title}</p>
-
                     <p className='mb-2 text-muted'>{`Rp ${item.price.toLocaleString('id')}`}</p>
-
                 </Col>
-                <Col className="text-center col-sm-3">
+                {view === 'cart' && <Col className="text-center col-sm-3">
                     <p className='underline'>Quantity</p>
                     <Col>
-                        <Button style={{ border: "none", backgroundColor: "white" }}>
-                            <img src={ICONS + 'trash.png'} style={{ width: 30, height: 30 }} onClick={() => deleteCart(item.id)}></img>
+                        <Button className='cart-btn'>
+                            <img src={ICONS + 'trash.png'} onClick={() => deleteCart(item.id)}></img>
                         </Button>
-                        <Button style={{ border: "none", backgroundColor: "white" }}>
-                            <img src={ICONS + 'minus.png'} style={{ width: 30, height: 30 }} onClick={() => kurang(item.id)}></img>
+                        <Button className='cart-btn'>
+                            <img src={ICONS + 'minus.png'} onClick={() => kurang(item.id)}></img>
                         </Button>
                         {item.jumlah_barang}
-                        <Button style={{ border: "none", backgroundColor: "white" }}>
-                            <img src={ICONS + 'plus.png'} style={{ width: 30, height: 30 }} onClick={() => tambah(item.id)}></img>
+                        <Button className='cart-btn'>
+                            <img src={ICONS + 'plus.png'} onClick={() => tambah(item.id)}></img>
                         </Button>
                     </Col>
-                </Col>
+                </Col>}
                 <Col className="col-sm-2">
                     <p className='underline'>Subtotal</p>
                     <Col>

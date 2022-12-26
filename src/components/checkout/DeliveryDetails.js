@@ -19,16 +19,21 @@ export default function DeliveryDetails({ profile }) {
 							<Col sm={6} className='mt-3'>
 								<Form.Group>
 									<Form.Label className='payment-method-label'>Courier</Form.Label>
-									<Form.Select disabled>
+									<Form.Select>
 										<option>Gojek</option>
+										<option>Grab</option>
+										<option>Ninja</option>
 									</Form.Select>
 								</Form.Group>
 							</Col>
 							<Col sm={6} className='mt-3'>
 								<Form.Group>
 									<Form.Label className='payment-method-label'>Payment Method</Form.Label>
-									<Form.Select disabled>
+									<Form.Select>
 										<option>Sinarmas</option>
+										<option>Gelapmas</option>
+										<option>ABC</option>
+										<option>Manja</option>
 									</Form.Select>
 								</Form.Group>
 							</Col>

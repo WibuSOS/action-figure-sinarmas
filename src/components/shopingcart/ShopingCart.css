@@ -18,3 +18,13 @@
 .btn-del {
     background-color: red;
 }
+
+.cart-btn {
+    border: none;
+    background-color: white;
+}
+
+.cart-btn>img {
+    width: 30px;
+    height: 30px;
+}

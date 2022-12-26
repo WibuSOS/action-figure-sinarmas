@@ -43,7 +43,7 @@ export default class Checkout extends Component {
 						</Row>
 						<Row>
 							<Col>
-								<CartList items={this.state.cart} />
+								<CartList items={this.state.cart} view={this.state.view} />
 							</Col>
 						</Row>
 					</Col>

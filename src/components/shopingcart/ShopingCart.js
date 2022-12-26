@@ -70,7 +70,7 @@ export default class ShopingCart extends Component {
                     <Col lg={8}>
                         <Row className='mb-3'>
                             <Col>
-                                <CartList items={this.state.items} change={this.changeData} />
+                                <CartList items={this.state.items} view={this.state.view} change={this.changeData} />
                             </Col>
                         </Row>
                     </Col>

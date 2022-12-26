@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './ShopingCart.css'
 
 export default function TotalPrice({ items, view, proceedBtn }) {
-    const totalPrice = items.reduce((total, item) => (total + item.price), 0);
+    const totalPrice = items.reduce((total, item) => (total + (item.price * item.jumlah_barang)), 0);
     const courierFee = 15000;
     const VAT = 0.1;
     const finalPrice = totalPrice + courierFee + (VAT * totalPrice);
