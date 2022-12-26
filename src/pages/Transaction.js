@@ -24,6 +24,7 @@ export default function Transaction() {
                 }
                 const res = await axios.get(API_URL+"/history?"+find)
                 setData(res.data)
+                console.log(res.data);
             }catch(err){
     
             }

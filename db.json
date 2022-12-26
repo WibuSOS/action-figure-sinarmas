@@ -6,7 +6,13 @@
       "sculptor": "APEX",
       "price": 2650000,
       "quantity": 100,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg",
+      "saved": [
+        {
+          "id": "",
+          "id_persons": ""
+        }
+      ]
     },
     {
       "id": 2,
@@ -14,7 +20,13 @@
       "sculptor": "Good Smile Company",
       "price": 650000,
       "quantity": 100,
-      "source": "nendoroid-yor-forger-spy-x-family.jpg"
+      "source": "nendoroid-yor-forger-spy-x-family.jpg",
+      "saved": [
+        {
+          "id": "",
+          "id_persons": ""
+        }
+      ]
     },
     {
       "id": 3,
@@ -22,7 +34,13 @@
       "sculptor": "Good Smile Company",
       "price": 800000,
       "quantity": 100,
-      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
+      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg",
+      "saved": [
+        {
+          "id": 1,
+          "id_persons": "1"
+        }
+      ]
     },
     {
       "id": 4,
@@ -30,7 +48,13 @@
       "sculptor": "Mihoyo",
       "price": 580000,
       "quantity": 100,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg",
+      "saved": [
+        {
+          "id": 1,
+          "id_persons": "1"
+        }
+      ]
     },
     {
       "id": 5,
@@ -38,7 +62,13 @@
       "sculptor": "Good Smile Company",
       "price": 720000,
       "quantiy": 100,
-      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg",
+      "saved": [
+        {
+          "id": "",
+          "id_persons": ""
+        }
+      ]
     },
     {
       "id": 6,
@@ -46,74 +76,58 @@
       "sculptor": "Good Smile Company",
       "price": 720000,
       "quantity": 100,
-      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg",
+      "saved": [
+        {
+          "id": "",
+          "id_persons": ""
+        }
+      ]
     }
   ],
   "bookmark": [
     {
-      "id": 4,
-      "id_persons": 1,
-      "id_item": 4,
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "quantity": 100,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+      "id": 1,
+      "id_persons": "2",
+      "id_item": 1,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "jumlah_barang": 1,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     },
     {
-      "id": 5,
-      "id_persons": 1,
-      "id_item": 2,
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "quantity": 100,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+      "id": 2,
+      "id_persons": "2",
+      "id_item": 6,
+      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "jumlah_barang": 1,
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
     }
   ],
   "cart": [
     {
       "id": 1,
-      "id_item": 4,
-      "id_persons": 1,
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
+      "id_persons": "1",
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
       "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     },
     {
       "id": 2,
-      "id_item": 4,
       "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
       "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     },
     {
       "id": 3,
-      "id_item": 2,
-      "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-    },
-    {
-      "id": 4,
-      "id_item": 4,
-      "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-    },
-    {
-      "id": 5,
       "id_persons": "1",
       "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
       "sculptor": "APEX",

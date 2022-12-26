@@ -9,3 +9,13 @@
 .figure-title {
 	min-height: 5rem;
 }
+.saved{
+	border : none;
+	background-color: red;
+	background: red;
+}
+.unsaved {
+	background-color: gray;
+	border : none;
+	
+}
