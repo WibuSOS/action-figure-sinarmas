@@ -10,7 +10,7 @@ import TotalPrice from '../shopingcart/TotalPrice'
 export default class Checkout extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { profile: {}, cart: [] };
+		this.state = { profile: {}, cart: [], view: 'checkout', proceedBtn: 'Proceed' };
 	}
 
 	componentDidMount() {
@@ -43,12 +43,12 @@ export default class Checkout extends Component {
 						</Row>
 						<Row>
 							<Col>
-								<CartList items={this.state.cart} />
+								<CartList items={this.state.cart} view={this.state.view} />
 							</Col>
 						</Row>
 					</Col>
 					<Col lg={4} className='mt-3 mt-lg-0'>
-						<TotalPrice />
+						<TotalPrice items={this.state.cart} view={this.state.view} proceedBtn={this.state.proceedBtn} />
 					</Col>
 				</Row>
 			</Container>

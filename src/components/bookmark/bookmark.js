@@ -19,9 +19,6 @@ export default class Bookmark extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
-		
-	
-
 	}
 	addToCart(itemId) {
 	}
