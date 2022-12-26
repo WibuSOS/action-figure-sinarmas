@@ -8,7 +8,7 @@ export default function CartList({ items }) {
         item => (
             <Row key={item.id}>
                 <Col className="col-sm">
-                    <img className='img-shopping-cart' variant='top' src={`${FIGURES_DIR}/${item.source}`} />
+                    <img className='img-shopping-cart' alt="gambar cart" variant='top' src={`${FIGURES_DIR}/${item.source}`} />
                 </Col>
                 <Col className="col-sm">
                     <p className='figure-title' >{item.title}</p>

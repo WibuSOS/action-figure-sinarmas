@@ -139,5 +139,30 @@
       "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
       "source": "profile1.png"
     }
+  ],
+  "history": [
+    {
+      "id": 1,
+      "id_persons": 1,
+      "paycode": "33333",
+      "orderID": "dadasd",
+      "tanggal": "20220903",
+      "jumlah": "2",
+      "detail": [
+        {
+          "nama": "figureB",
+          "jumlah": "2",
+          "harga": 10000,
+          "gambar": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+        },
+        {
+          "nama": "figureC",
+          "jumlah": "3",
+          "harga": 10000,
+          "gambar": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+        }
+      ],
+      "status": 3
+    }
   ]
 }

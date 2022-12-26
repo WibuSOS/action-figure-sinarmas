@@ -10,6 +10,7 @@ import RegisterSummary from './pages/Register/RegisterSummary';
 import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
+import History from './pages/Transaction'
 
 function App() {
   if (localStorage.getItem('name') == null) {
@@ -35,6 +36,7 @@ function App() {
           <Route path="/bookmark" element={<Bookmark />} exact />
           <Route path="/cart" element={<ShopingCart />} exact />
           <Route path="/checkout" element={<Checkout />} exact />
+          <Route path="/history" element={<History />} exact />
         </Routes>
       </BrowserRouter>
     )

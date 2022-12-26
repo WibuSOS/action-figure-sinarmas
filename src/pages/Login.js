@@ -31,7 +31,7 @@ export default class Login extends Component {
 			.get(API_URL+"/profiles?name=" +this.state.username+"&password="+this.state.password)
 			.then(res => {
                 //console.log(res.data[0].name);
-                if(res.data.length==0)
+                if(res.data.length===0)
                 {
                     swal({
                         title: "Gagal Login",
@@ -68,10 +68,12 @@ export default class Login extends Component {
 			.catch(error => console.log(error));  
 	};
   render() {
-    {this.state.login && (
-        <Navigate to="/" replace={true} />
-    )}
-    if(localStorage.getItem('name')!=null)
+    if(this.state.login){
+        return (
+            <Navigate to="/" replace={true} />
+        )
+    }
+    else if(localStorage.getItem('name')!=null)
         {
             window.location.href="/"
         }

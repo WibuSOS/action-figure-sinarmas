@@ -1,10 +1,9 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_URL, FIGURES_DIR, API_URL } from '../../const'
+import { FIGURES_DIR, API_URL } from '../../const'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { Link } from "react-router-dom";
+import { } from "react-router-dom";
 import swal from 'sweetalert';
-import { async } from 'q';
 
 export default class Bookmark extends Component {
 	constructor(props) {
