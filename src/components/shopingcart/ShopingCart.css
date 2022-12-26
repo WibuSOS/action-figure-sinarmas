@@ -6,6 +6,15 @@
     text-align: center;
 }
 
-.img-shopping-cart {
+.img-cart {
     height: 120px;
+}
+
+.underline {
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.btn-del {
+    background-color: red;
 }
