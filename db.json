@@ -6,13 +6,7 @@
       "sculptor": "APEX",
       "price": 2650000,
       "quantity": 100,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg",
-      "saved": [
-        {
-          "id": "",
-          "id_persons": ""
-        }
-      ]
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     },
     {
       "id": 2,
@@ -20,13 +14,7 @@
       "sculptor": "Good Smile Company",
       "price": 650000,
       "quantity": 100,
-      "source": "nendoroid-yor-forger-spy-x-family.jpg",
-      "saved": [
-        {
-          "id": "",
-          "id_persons": ""
-        }
-      ]
+      "source": "nendoroid-yor-forger-spy-x-family.jpg"
     },
     {
       "id": 3,
@@ -34,13 +22,7 @@
       "sculptor": "Good Smile Company",
       "price": 800000,
       "quantity": 100,
-      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg",
-      "saved": [
-        {
-          "id": 1,
-          "id_persons": "1"
-        }
-      ]
+      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
     },
     {
       "id": 4,
@@ -48,13 +30,7 @@
       "sculptor": "Mihoyo",
       "price": 580000,
       "quantity": 100,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg",
-      "saved": [
-        {
-          "id": 1,
-          "id_persons": "1"
-        }
-      ]
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     },
     {
       "id": 5,
@@ -62,13 +38,7 @@
       "sculptor": "Good Smile Company",
       "price": 720000,
       "quantiy": 100,
-      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg",
-      "saved": [
-        {
-          "id": "",
-          "id_persons": ""
-        }
-      ]
+      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
     },
     {
       "id": 6,
@@ -76,13 +46,7 @@
       "sculptor": "Good Smile Company",
       "price": 720000,
       "quantity": 100,
-      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg",
-      "saved": [
-        {
-          "id": "",
-          "id_persons": ""
-        }
-      ]
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
     }
   ],
   "bookmark": [
