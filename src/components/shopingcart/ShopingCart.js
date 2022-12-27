@@ -14,7 +14,7 @@ export default class ShopingCart extends Component {
 
     componentDidMount() {
         axios
-            .get(API_URL + "/Cart?id_persons=" + localStorage.getItem("id"))
+            .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
             .then(res => {
                 let items = res.data;
                 this.setState({ items });
@@ -58,7 +58,7 @@ export default class ShopingCart extends Component {
                 }
             } else if (type === "deleteCart") {
                 this.deleteData(items[index])
-                window.location.href = "/Cart"
+                window.location.href = "/cart"
             }
         }
     }

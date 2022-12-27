@@ -31,7 +31,7 @@ export default class ItemList extends Component {
 		// 	.catch(error => console.log(error));
 
 		axios
-			.get(API_URL + "/bookmark?id_persons=" + localStorage.getItem("id"))
+			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
 			.then(res => {
 				let bookmarks = res.data;
 				this.setState({ bookmarks });
@@ -55,7 +55,7 @@ export default class ItemList extends Component {
 
 				const bookmark = {
 					id: id_bookmark,
-					id_persons: localStorage.getItem("id"),
+					id_person: localStorage.getItem("id"),
 					id_item: id,
 					title: title,
 					sculptor: sculptor,
@@ -95,7 +95,7 @@ export default class ItemList extends Component {
 				const cart = {
 					id: id_cart,
 					id_item: id,
-					id_persons: localStorage.getItem("id"),
+					id_person: localStorage.getItem("id"),
 					title: title,
 					sculptor: sculptor,
 					price: price,
