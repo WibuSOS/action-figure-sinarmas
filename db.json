@@ -91,6 +91,16 @@
       "price": 800000,
       "jumlah_barang": 1,
       "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
+    },
+    {
+      "id_item": 6,
+      "id_person": "2",
+      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "jumlah_barang": 1,
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg",
+      "id": 5
     }
   ],
   "profiles": [
