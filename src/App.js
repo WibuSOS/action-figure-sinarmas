@@ -15,7 +15,7 @@ import { useContext } from 'react';
 import UserContext, { Store } from './context/UserContext'
 
 function MultiRouter() {
-  const { state, dispatch } = useContext(Store)
+  const { state } = useContext(Store)
 
   return (
     <Routes>
