@@ -67,16 +67,19 @@ export default class ShopingCart extends Component {
         return (
             <Container className='mt-3'>
                 <Row>
-                    <Col lg={8}>
+                    <Col lg={this.state.items.length > 0 ? 8 : 12}>
                         <Row className='mb-3'>
                             <Col>
                                 <CartList items={this.state.items} view={this.state.view} change={this.changeData} />
                             </Col>
                         </Row>
                     </Col>
-                    <Col lg={4} className='mt-3 mt-lg-0'>
-                        <TotalPrice items={this.state.items} view={this.state.view} proceedBtn={this.state.proceedBtn} />
-                    </Col>
+                    {
+                        this.state.items.length > 0 &&
+                        <Col lg={4} className='mt-3 mt-lg-0'>
+                            <TotalPrice items={this.state.items} view={this.state.view} proceedBtn={this.state.proceedBtn} />
+                        </Col>
+                    }
                 </Row>
             </Container>
         )

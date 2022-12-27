@@ -79,46 +79,19 @@
       "price": 2650000,
       "jumlah_barang": 1,
       "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-    }
-  ],
-  "cart": [
-    {
-      "id": 1,
-      "id_persons": "1",
-      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-      "sculptor": "APEX",
-      "price": 2650000,
-      "jumlah_barang": 1,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-    },
-    {
-      "id": 2,
-      "id_persons": "1",
-      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-      "sculptor": "APEX",
-      "price": 2650000,
-      "jumlah_barang": 1,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-    },
-    {
-      "id": 3,
-      "id_persons": "1",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 3,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     },
     {
       "id": 4,
       "id_persons": "1",
+      "id_item": 2,
       "title": "Nendoroid Yor Forger - SPY x FAMILY",
       "sculptor": "Good Smile Company",
       "price": 650000,
-      "jumlah_barang": 4,
+      "jumlah_barang": 1,
       "source": "nendoroid-yor-forger-spy-x-family.jpg"
     }
   ],
+  "cart": [],
   "profiles": [
     {
       "id": 1,

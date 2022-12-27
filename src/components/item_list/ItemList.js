@@ -5,6 +5,7 @@ import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
+
 export default class ItemList extends Component {
 	constructor(props) {
 		super(props);
@@ -17,9 +18,17 @@ export default class ItemList extends Component {
 			.then(res => {
 				let items = res.data;
 				this.setState({ items });
-
 			})
 			.catch(error => console.log(error));
+
+		// axios
+		// 	.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
+		// 	.then(res => {
+		// 		let cart = res.data;
+		// 		if (!cart || (cart && cart.length <= 0)) { window.location.href = '/' }
+		// 		this.setState({ cart });
+		// 	})
+		// 	.catch(error => console.log(error));
 
 		axios
 			.get(API_URL + "/bookmark?id_persons=" + localStorage.getItem("id"))
@@ -29,8 +38,8 @@ export default class ItemList extends Component {
 				console.log(bookmarks);
 			})
 			.catch(error => console.log(error));
-
 	}
+
 	saveItem({ id, title, sculptor, price, source }) {
 		axios
 			.get(API_URL + "/bookmark?_sort=id&_order=desc")
@@ -43,6 +52,7 @@ export default class ItemList extends Component {
 				else {
 					id_bookmark = res.data[0].id + 1;
 				}
+
 				const bookmark = {
 					id: id_bookmark,
 					id_persons: localStorage.getItem("id"),
@@ -53,12 +63,12 @@ export default class ItemList extends Component {
 					jumlah_barang: 1,
 					source: source
 				};
+
 				axios
 					.post(API_URL + "/bookmark", bookmark)
-					.then(res => {
-
-					})
+					.then(() => { })
 					.catch(error => console.log(error));
+
 				swal({
 					title: "Saved Item",
 					text: "Saved Item",
@@ -69,21 +79,22 @@ export default class ItemList extends Component {
 			})
 			.catch(error => console.log(error));
 	}
-	addToCart({ id_item, title, sculptor, price, source }) {
+
+	addToCart({ id, title, sculptor, price, source }) {
 		axios
 			.get(API_URL + "/cart?_sort=id&_order=desc")
 			.then(res => {
-				let id_chart
+				let id_cart
 				if (res.data.length === 0) {
-					id_chart = 1
+					id_cart = 1
 				}
 				else {
-					id_chart = res.data[0].id + 1;
+					id_cart = res.data[0].id + 1;
 				}
 
-				const charts = {
-					id: id_chart,
-					id_item: id_item,
+				const cart = {
+					id: id_cart,
+					id_item: id,
 					id_persons: localStorage.getItem("id"),
 					title: title,
 					sculptor: sculptor,
@@ -91,12 +102,12 @@ export default class ItemList extends Component {
 					jumlah_barang: 1,
 					source: source
 				};
-				axios
-					.post(API_URL + "/cart", charts)
-					.then(res => {
 
-					})
+				axios
+					.post(API_URL + "/cart", cart)
+					.then(() => { })
 					.catch(error => console.log(error));
+
 				swal({
 					title: "Sukses Add to Cart",
 					text: "Sukses Add to Cart",
@@ -113,13 +124,7 @@ export default class ItemList extends Component {
 		localStorage.removeItem('id');
 		window.location.href = "/";
 	}
-	status(status) {
-		if (this.isSaved === true) {
-			return "Unsaved"
-		} else if (this.isSaved === false) {
-			return "Saved"
-		}
-	}
+
 	render() {
 		let itemList = this.state.items.map(
 			item => (

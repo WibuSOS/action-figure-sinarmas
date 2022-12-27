@@ -77,7 +77,13 @@ export default function CartList({ items, view, change }) {
             <Card.Body>
                 <Card.Title>Shopping Cart</Card.Title>
                 <hr />
-                {itemList}
+                {
+                    itemList.length > 0 ?
+                        itemList :
+                        <div className='text-center fw-bold'>
+                            Oops... tidak ada apa-apa di sini
+                        </div>
+                }
             </Card.Body>
         </Card>
     )
