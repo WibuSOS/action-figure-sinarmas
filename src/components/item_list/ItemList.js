@@ -160,7 +160,6 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
-				<Button onClick={() => this.logout()}>Log Out</Button>
 				<Row>
 					{itemList}
 				</Row>

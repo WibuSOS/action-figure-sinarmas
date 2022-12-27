@@ -21,6 +21,7 @@ export default class ShopingCart extends Component {
             })
             .catch(error => console.log(error));
     }
+
     updateData = async (item) => {
         try {
             const res = await axios.put(API_URL + "/cart/" + item.id, item)

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_DIR, API_URL } from '../../const'
+import { FIGURES_DIR, API_URL, CART_URL } from '../../const'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { } from "react-router-dom";
 import swal from 'sweetalert';
@@ -42,11 +42,9 @@ export default class Bookmark extends Component {
 	}
 	handleAddToCart = async (id_item, title, sculptor, price, source) => {
 		axios
-			.get(API_URL + "/cart?_sort=id&_order=desc")
-			.then(res => {
-				let id_cart = res.data[0].id + 1;
-				const charts = {
-					id: id_cart,
+			.get(`${CART_URL}?_sort=id&_order=desc`)
+			.then(() => {
+				const cart = {
 					id_item: id_item,
 					id_person: localStorage.getItem("id"),
 					title: title,
@@ -54,10 +52,9 @@ export default class Bookmark extends Component {
 					price: price,
 					jumlah_barang: 1,
 					source: source
-
 				};
 				axios
-					.post(API_URL + "/cart", charts)
+					.post(CART_URL, cart)
 					.then(res => {
 						swal({
 							title: "Sukses Masuk Keranjang",
@@ -66,15 +63,12 @@ export default class Bookmark extends Component {
 							button: false,
 							timer: 1500,
 						});
-					}
-					)
+					})
 					.catch(error => console.log(error));
-			}
-			)
+			})
 			.catch(error => console.log(error));
-
-
 	}
+
 	render() {
 		let itemList = this.state.items.map(
 			item => (
@@ -88,7 +82,6 @@ export default class Bookmark extends Component {
 						<Button variant="danger" style={{ width: "120px" }} onClick={() => this.handleDelete(item.id)}>Delete </Button>{' '}
 					</div>
 				</Col>
-
 			)
 		);
 
@@ -102,7 +95,6 @@ export default class Bookmark extends Component {
 						<Row>
 							{itemList}
 						</Row>
-
 					</Container>
 				</div>
 			</div>
