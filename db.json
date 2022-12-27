@@ -69,16 +69,6 @@
       "price": 720000,
       "jumlah_barang": 1,
       "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
-    },
-    {
-      "id": 3,
-      "id_person": "1",
-      "id_item": 1,
-      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-      "sculptor": "APEX",
-      "price": 2650000,
-      "jumlah_barang": 1,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     }
   ],
   "cart": [
@@ -101,16 +91,6 @@
       "price": 800000,
       "jumlah_barang": 1,
       "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
-    },
-    {
-      "id": 5,
-      "id_item": 4,
-      "id_person": "2",
-      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-      "sculptor": "Mihoyo",
-      "price": 580000,
-      "jumlah_barang": 1,
-      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
     }
   ],
   "profiles": [
@@ -129,6 +109,28 @@
       "email": "julianto@pega.com",
       "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
       "source": "profile1.png"
+    }
+  ],
+  "address": [
+    {
+      "id": 1,
+      "id_person": 1,
+      "province": "Jakarta Barat",
+      "city": "DKI JAKARTA",
+      "address": "Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Main"
+    },
+    {
+      "id": 2,
+      "id_person": 1,
+      "province": "Jakarta Barat",
+      "city": "DKI JAKARTA",
+      "address": "Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Not Main"
     }
   ],
   "history": [
@@ -221,6 +223,29 @@
           "jumlah": 1,
           "harga": 580000,
           "gambar": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+        }
+      ],
+      "status": 1
+    },
+    {
+      "id": 7,
+      "id_person": "2",
+      "paycode": "33333",
+      "orderID": "dadasd",
+      "tanggal": "20221127",
+      "jumlah": 2,
+      "detail": [
+        {
+          "nama": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+          "jumlah": 1,
+          "harga": 580000,
+          "gambar": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+        },
+        {
+          "nama": "Nendoroid Yuji Itadori",
+          "jumlah": 1,
+          "harga": 800000,
+          "gambar": "nendoroid-yuji-itadori-second-preorder-period.jpg"
         }
       ],
       "status": 1
