@@ -12,48 +12,46 @@ import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
 import History from './pages/Transaction'
 import { useContext } from 'react';
-import UserContext,{useStore, Store} from './context/UserContext'
-function MultiRouter(){
-  const {state,dispatch} =useContext(Store)
-  // console.log(val)
-  return(
+import UserContext, { Store } from './context/UserContext'
+
+function MultiRouter() {
+  const { state, dispatch } = useContext(Store)
+
+  return (
     <Routes>
       {
-        state.user == null?
-        (
-          <>
-            <Route path="/" element={<Login />} exact />
-            <Route path="/register" element={<Register />} exact />
-            <Route path="/registerAddress" element={<RegisterAddress />} exact />
-            <Route path="/registerPayment" element={<RegisterPayment />} exact />
-            <Route path="/registerSummary" element={<RegisterSummary />} exact />
-          </>
-        ):(
-          <>
-            <Route path="/" element={<ItemList />} exact />
-           <Route path="/bookmark" element={<Bookmark />} exact />
-           <Route path="/cart" element={<ShopingCart />} exact />
-           <Route path="/checkout" element={<Checkout />} exact />
-           <Route path="/history" element={<History />} exact />
-          </>
-        )
+        state.user == null ?
+          (
+            <>
+              <Route path="/" element={<Login />} exact />
+              <Route path="/register" element={<Register />} exact />
+              <Route path="/registerAddress" element={<RegisterAddress />} exact />
+              <Route path="/registerPayment" element={<RegisterPayment />} exact />
+              <Route path="/registerSummary" element={<RegisterSummary />} exact />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<ItemList />} exact />
+              <Route path="/bookmark" element={<Bookmark />} exact />
+              <Route path="/cart" element={<ShopingCart />} exact />
+              <Route path="/checkout" element={<Checkout />} exact />
+              <Route path="/history" element={<History />} exact />
+            </>
+          )
       }
-                
-                </Routes>
+    </Routes>
   )
 }
 function App() {
- 
   return (
     <UserContext>
       <BrowserRouter>
         <Header />
-            <MultiRouter/>
-            
-        </BrowserRouter>
+        <MultiRouter />
+      </BrowserRouter>
     </UserContext>
   )
-  
+
   // if (localStorage.getItem('name') == null) {
   //   return (
   //     <BrowserRouter>
