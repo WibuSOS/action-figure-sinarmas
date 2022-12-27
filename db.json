@@ -91,6 +91,16 @@
       "price": 2650000,
       "jumlah_barang": 1,
       "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+    },
+    {
+      "id": 2,
+      "id_item": 2,
+      "id_person": "1",
+      "title": "Nendoroid Yor Forger - SPY x FAMILY",
+      "sculptor": "Good Smile Company",
+      "price": 650000,
+      "jumlah_barang": 1,
+      "source": "nendoroid-yor-forger-spy-x-family.jpg"
     }
   ],
   "profiles": [
