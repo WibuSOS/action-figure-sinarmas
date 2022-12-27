@@ -33,7 +33,7 @@ function AccountReducer(state, action) {
 export default function UserContext({ children }) {
   const [state, dispatch] = useReducer(AccountReducer, { user: null, history: 0, bookmark: 0, cart: 0 }, () => {
     const name = localStorage.getItem("name")
-    return { user: (name !== undefined && name != null ? name : null), history: [], bookmark: [], cart: [] }
+    return { user: (name !== undefined && name != null ? name : null), history: 0, bookmark: 0, cart: 0 }
   })
   const value = { state, dispatch }
   return <Store.Provider value={value}>{children}</Store.Provider>
