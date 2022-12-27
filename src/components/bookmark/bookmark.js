@@ -13,7 +13,7 @@ export default class Bookmark extends Component {
 
 	componentDidMount() {
 		axios
-			.get(API_URL+"/bookmark?id_persons="+localStorage.getItem("id"))
+			.get(API_URL+"/bookmark?id_person="+localStorage.getItem("id"))
 			.then(res => {
 				let items = res.data;
 				this.setState({ items });
@@ -44,29 +44,28 @@ export default class Bookmark extends Component {
 		axios
 			.get(API_URL+"/cart?_sort=id&_order=desc")
 			.then(res =>{	
-				let id_chart = res.data[0].id + 1;
-				const charts = {
-					id : id_chart,
-					id_item : id_item,
-					id_persons : localStorage.getItem("id"),
-					title : title,
-					sculptor : sculptor,
-					price : price,
-					jumlah_barang : 1,
-					source : source
+					const charts = {
+						id_item : id_item,
+						id_persons : localStorage.getItem("id"),
+						title : title,
+						sculptor : sculptor,
+						price : price,
+						jumlah_barang : 1,
+						source : source
+						
+					};
 					
-				};
-				axios
-				.post(API_URL+"/cart", charts)
-				.then(res =>{	
-					swal({
-					title: "Sukses Masuk Keranjang",
-					text: "Sukses Masuk Keranjang ",
-					icon: "success",
-					button: false,
-					timer: 1500,
-				  });
-			}
+					axios
+					.post(API_URL+"/cart", charts)
+					.then(res =>{	
+						swal({
+						title: "Sukses Masuk Keranjang",
+						text: "Sukses Masuk Keranjang ",
+						icon: "success",
+						button: false,
+						timer: 1500,
+					});
+				}
 			)
 			.catch(error => console.log(error));
 			}

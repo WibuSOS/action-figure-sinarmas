@@ -14,13 +14,14 @@ export default class ShopingCart extends Component {
 
     componentDidMount() {
         axios
-            .get(API_URL + "/Cart?id_persons=" + localStorage.getItem("id"))
+            .get(API_URL + "/cart?id_persons=" + localStorage.getItem("id"))
             .then(res => {
                 let items = res.data;
                 this.setState({ items });
             })
             .catch(error => console.log(error));
     }
+    
     updateData = async (item) => {
         try {
             const res = await axios.put(API_URL + "/cart/" + item.id, item)

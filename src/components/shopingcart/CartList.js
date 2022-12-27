@@ -39,7 +39,7 @@ export default function CartList({ items, view, change }) {
 
     let itemList = items.map(
         item => (
-            <Row key={item.id}>
+            <Row key={item.id} className='mb-4'>
                 <Col className="col-sm-3">
                     <img className='underline img-cart' variant='top' src={`${FIGURES_DIR}/${item.source}`} alt={item.title} />
                 </Col>
