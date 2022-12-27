@@ -1,54 +1,135 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS } from '../../const'
+import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS, CART_URL } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
-
 export default class ItemList extends Component {
-	static contextType =Store
+	static contextType = Store
 	constructor(props) {
 		super(props);
-		this.state = { items: [] };
+		this.state = { items: [], cart: [], bookmarks: [] };
 	}
 
 	componentDidMount() {
+		this.getResource();
+		this.loadData()
+	}
+
+	getResource() {
 		axios
 			.get(FIGURES_URL)
 			.then(res => {
 				let items = res.data;
 				this.setState({ items });
+				
 			})
 			.catch(error => console.log(error));
+			this.loadData()
 
+		
 	}
-	addToCart({ id_item, title, sculptor, price, source }) {
+	async loadData(){
+		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+        try{
+           const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+		   this.setState({ cart:res.data });
+           jumlahCart = res.data.length
+        }catch(err){
+
+        }
+        try{
+            const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+            jumlahHistory = res.data.length
+         }catch(err){
+ 
+         }
+         try{
+            const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+            jumlahBookmark = res.data.length
+			this.setState({ bookmarks:res.data });
+         }catch(err){
+ 
+         }
+		this.context.dispatch({type:"setDefault",payload:{bookmark:jumlahBookmark, history:jumlahHistory, cart:jumlahCart}})
+	}
+	saveItem({ id, title, sculptor, price, source }) {
 		axios
-			.get(API_URL + "/cart?_sort=id&_order=desc")
+			.get(API_URL + "/bookmark?_sort=id&_order=desc")
 			.then(res => {
-				let id_chart = res.data[0].id + 1;
-				const charts = {
-					id: id_chart,
-					id_item: id_item,
-					id_persons: localStorage.getItem("id"),
+				let id_bookmark = 0
+				if (res.data.length == 0) {
+					id_bookmark = 1
+					console.log(id_bookmark)
+				}
+				else {
+					id_bookmark = res.data[0].id + 1;
+				}
+
+				const bookmark = {
+					id: id_bookmark,
+					id_person: localStorage.getItem("id"),
+					id_item: id,
 					title: title,
 					sculptor: sculptor,
 					price: price,
 					jumlah_barang: 1,
 					source: source
 				};
+
 				axios
-					.post(API_URL + "/cart", charts)
-					.then(res => {
+					.post(API_URL + "/bookmark", bookmark)
+					.then(() => {
 						swal({
-							title: "Sukses Masuk Keranjang",
-							text: "Sukses Masuk Keranjang ",
+							title: "Saved Item",
+							text: "Saved Item",
 							icon: "success",
 							button: false,
 							timer: 1500,
-						});
+						})
+							.then(() => this.getResource());
+					})
+					.catch(error => console.log(error));
+			})
+			.catch(error => console.log(error));
+	}
+
+	addToCart({ id, title, sculptor, price, source }) {
+		axios
+			.get(`${CART_URL}?_sort=id&_order=desc`)
+			.then(res => {
+				let id_cart
+				if (res.data.length === 0) {
+					id_cart = 1
+				}
+				else {
+					id_cart = res.data[0].id + 1;
+				}
+
+				const cart = {
+					id: id_cart,
+					id_item: id,
+					id_person: localStorage.getItem("id"),
+					title: title,
+					sculptor: sculptor,
+					price: price,
+					jumlah_barang: 1,
+					source: source
+				};
+
+				axios
+					.post(CART_URL, cart)
+					.then(() => {
+						swal({
+							title: "Sukses Add to Cart",
+							text: "Sukses Add to Cart",
+							icon: "success",
+							button: false,
+							timer: 1500,
+						})
+							.then(() => this.getResource());
 					})
 					.catch(error => console.log(error));
 			})
@@ -58,8 +139,7 @@ export default class ItemList extends Component {
 	logout() {
 		localStorage.removeItem('name');
 		localStorage.removeItem('id');
-		this.context.dispatch({type:"delete"})
-		// window.location.href = "/";
+		window.location.href = "/";
 	}
 
 	render() {
@@ -74,9 +154,14 @@ export default class ItemList extends Component {
 							<Card.Text >
 								{`By ${item.sculptor}`}
 							</Card.Text>
-							
-							<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
-							
+							{
+								this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
+									<Button variant='dark' disabled>In cart</Button> :
+									<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							}
+							<Button onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
+								<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
+							</Button>
 						</Card.Body>
 					</Card>
 				</Col>
@@ -85,7 +170,6 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
-				<Button onClick={() => this.logout()}>Log Out</Button>
 				<Row>
 					{itemList}
 				</Row>

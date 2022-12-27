@@ -10,7 +10,7 @@ import TotalPrice from '../shopingcart/TotalPrice'
 export default class Checkout extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { profile: {}, cart: [] };
+		this.state = { profile: {}, cart: [], view: 'checkout', proceedBtn: 'Proceed' };
 	}
 
 	componentDidMount() {
@@ -26,6 +26,7 @@ export default class Checkout extends Component {
 			.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
 			.then(res => {
 				let cart = res.data;
+				if (!cart || (cart && cart.length <= 0)) { window.location.href = '/' }
 				this.setState({ cart });
 			})
 			.catch(error => console.log(error));
@@ -35,21 +36,27 @@ export default class Checkout extends Component {
 		return (
 			<Container className='checkout mt-3'>
 				<Row>
-					<Col lg={8}>
-						<Row className='mb-3'>
-							<Col>
-								<DeliveryDetails profile={this.state.profile} />
-							</Col>
-						</Row>
+					<Col lg={this.state.cart.length > 0 ? 8 : 12}>
+						{
+							this.state.cart.length > 0 &&
+							<Row className='mb-3'>
+								<Col>
+									<DeliveryDetails profile={this.state.profile} />
+								</Col>
+							</Row>
+						}
 						<Row>
 							<Col>
-								<CartList items={this.state.cart} />
+								<CartList items={this.state.cart} view={this.state.view} />
 							</Col>
 						</Row>
 					</Col>
-					<Col lg={4} className='mt-3 mt-lg-0'>
-						<TotalPrice />
-					</Col>
+					{
+						this.state.cart.length > 0 &&
+						<Col lg={4} className='mt-3 mt-lg-0'>
+							<TotalPrice items={this.state.cart} view={this.state.view} proceedBtn={this.state.proceedBtn} />
+						</Col>
+					}
 				</Row>
 			</Container>
 		)

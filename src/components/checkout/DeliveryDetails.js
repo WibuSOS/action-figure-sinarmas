@@ -9,19 +9,36 @@ export default function DeliveryDetails({ profile }) {
 				<Card.Title>Delivery Details</Card.Title>
 				<hr />
 				<Row>
-					<Col md={6}>
+					<Col className='col-12'>
 						<Col className='mb-1'><Card.Subtitle>{profile.name}</Card.Subtitle></Col>
 						<Col><Card.Text>{profile.address}</Card.Text></Col>
 						<Col><Card.Link>Change address</Card.Link></Col>
 					</Col>
-					<Col md={6} className='mt-3 mt-md-0'>
-						<Form.Group>
-							<Form.Label className='payment-method-label'>Payment Method</Form.Label>
-							<Form.Select disabled>
-								<option>Sinarmas</option>
-							</Form.Select>
-						</Form.Group>
-					</Col>
+					<Form>
+						<Row>
+							<Col sm={6} className='mt-3'>
+								<Form.Group>
+									<Form.Label className='payment-method-label'>Courier</Form.Label>
+									<Form.Select>
+										<option>Gojek</option>
+										<option>Grab</option>
+										<option>Ninja</option>
+									</Form.Select>
+								</Form.Group>
+							</Col>
+							<Col sm={6} className='mt-3'>
+								<Form.Group>
+									<Form.Label className='payment-method-label'>Payment Method</Form.Label>
+									<Form.Select>
+										<option>Sinarmas</option>
+										<option>Gelapmas</option>
+										<option>ABC</option>
+										<option>Manja</option>
+									</Form.Select>
+								</Form.Group>
+							</Col>
+						</Row>
+					</Form>
 				</Row>
 			</Card.Body>
 		</Card>

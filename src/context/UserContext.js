@@ -9,7 +9,19 @@ function AccountReducer(state, action) {
         return {...state, user:action.payload}
       }
       case 'delete': {
-        return {...state, user:null};
+        return {...state, user:null, bookmark:0, history:0, cart:0};
+      }
+      case 'setCart':{
+        return {...state, cart:action.payload}
+      }
+      case 'setBookmark':{
+        return {...state, bookmark:action.payload}
+      }
+      case 'setHistory':{
+        return {...state, history:action.payload}
+      }
+      case 'setDefault':{
+        return {...state, ...action.payload}
       }
       default: {
         console.log("not found"+action.type)
@@ -18,9 +30,9 @@ function AccountReducer(state, action) {
     }
 }
 export default function UserContext({children}){
-    const [state, dispatch] = useReducer(AccountReducer, {user: null},()=>{
+    const [state, dispatch] = useReducer(AccountReducer, {user: null, history:0, bookmark:0, cart:0},()=>{
         const name = localStorage.getItem("name")
-        return{user:name !== undefined && name != null ? name : null}
+        return{user:(name !== undefined && name != null ? name : null), history:[], bookmark:[], cart:[]}
     })
     const value = {state, dispatch}
     return <Store.Provider value={value}>{children}</Store.Provider>
