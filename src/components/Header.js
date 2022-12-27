@@ -4,64 +4,41 @@ import '../styles/custom.css'
 import { ICONS, API_URL } from '../const'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
+import { useStore } from '../context/UserContext';
 
 
 export default function Header() {
+    const {state, dispatch} = useStore()
     const[jumlahCart, setJumlahCart]= useState(0)
     const[jumlahHistory, setJumlahHistory]= useState(0)
     const[jumlahBookmark, setJumlahBookmark]= useState(0)
 
     useEffect(()=>{
-        axios
-            .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                let data = 0;
-                if(res.data.length == 0)
-                    { 
-                        data="";
-                    }
-                else{
-                    data = res.data.length
-                }
-                setJumlahCart (data);
-            })
-            .catch(error => console.log(error));
-        axios
-            .get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                let data = 0;
-                if(res.data.length == 0)
-                    { 
-                        data="";
-                    }
-                else{
-                    data = res.data.length
-                }
-                setJumlahHistory (data);
-
-            })
-            .catch(error => console.log(error));
+        // if(state.user != null) loadData()
+        // axios
+        //     .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         dispatch({type:"setCart",payload:res.data.length})
+        //         // setJumlahCart (res.data.length);
+        //     })
+        //     .catch(error => console.log(error));
+        // axios
+        //     .get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         // setJumlahHistory (res.data.length);
+        //         dispatch({type:"setHistory",payload:res.data.length})
+        //     })
+        //     .catch(error => console.log(error));
         
-        axios
-            .get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                let data = 0;
-                if(res.data.length == 0)
-                    { 
-                        data="";
-                    }
-                else{
-                    data = res.data.length
-                }
-                setJumlahBookmark (data);
-                console.log(setJumlahBookmark);
-                console.log(res.data);
-            })
-            .catch(error => console.log(error));
+        // axios
+        //     .get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         // setJumlahBookmark (res.data.length);
+        //         dispatch({type:"setBookmark",payload:res.data.length})
+        //     })
+        //     .catch(error => console.log(error));
         
     },[])
-    
-    
     if (localStorage.getItem('name') == null) {
         return (
             <nav className="navbar navbar-expand-lg background-nav">
@@ -75,7 +52,8 @@ export default function Header() {
         const logout = () => {
             localStorage.removeItem('name');
             localStorage.removeItem('id');
-            window.location.href = "/";
+            dispatch({type:"delete"})
+            // window.location.href = "/";
         }
         return (
             <nav className="navbar navbar-expand-lg background-nav">
@@ -94,7 +72,8 @@ export default function Header() {
                                 <Link to="/cart" className="nav-link" aria-current="page" >
                                     <img src={ICONS + "shopping-cart-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahCart}
+                                        {/* {jumlahCart} */ state.cart }
+                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
@@ -102,7 +81,8 @@ export default function Header() {
                                 <Link to="/history" className="nav-link" >
                                     <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahHistory}
+                                        {/* {jumlahHistory} */ state.history}
+                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
@@ -110,7 +90,8 @@ export default function Header() {
                                 <Link to="/bookmark" className="nav-link img-link">
                                     <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahBookmark}
+                                        {/* {jumlahBookmark} */ state.bookmark}
+                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>

@@ -146,6 +146,30 @@
         }
       ],
       "status": 3
+    },
+    {
+      "detail": [
+        {
+          "nama": "figureD",
+          "jumlah": "2",
+          "harga": 10000,
+          "gambar": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+        },
+        {
+          "nama": "figureG",
+          "jumlah": "3",
+          "harga": 10000,
+          "gambar": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
+        }
+      ],
+      "status": 3,
+      "id": 2
+    },
+    {
+      "id": 3
+    },
+    {
+      "id": 4
     }
   ]
 }
