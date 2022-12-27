@@ -1,43 +1,44 @@
-import React,{useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../styles/custom.css'
 import { ICONS, API_URL } from '../const'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
+import { useStore } from '../context/UserContext';
 
 
 export default function Header() {
-    const[jumlahCart, setJumlahCart]= useState(0)
-    const[jumlahHistory, setJumlahHistory]= useState(0)
-    const[jumlahBookmark, setJumlahBookmark]= useState(0)
+    const { state, dispatch } = useStore()
+    const [jumlahCart, setJumlahCart] = useState(0)
+    const [jumlahHistory, setJumlahHistory] = useState(0)
+    const [jumlahBookmark, setJumlahBookmark] = useState(0)
 
-    useEffect(()=>{
-        axios
-            .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                setJumlahCart (res.data.length);
-            })
-            .catch(error => console.log(error));
-        axios
-            .get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                setJumlahHistory (res.data.length);
+    useEffect(() => {
+        // if(state.user != null) loadData()
+        // axios
+        //     .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         dispatch({type:"setCart",payload:res.data.length})
+        //         // setJumlahCart (res.data.length);
+        //     })
+        //     .catch(error => console.log(error));
+        // axios
+        //     .get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         // setJumlahHistory (res.data.length);
+        //         dispatch({type:"setHistory",payload:res.data.length})
+        //     })
+        //     .catch(error => console.log(error));
 
-            })
-            .catch(error => console.log(error));
-        
-        axios
-            .get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-            .then(res => {
-                setJumlahBookmark (res.data.length);
-                console.log(setJumlahBookmark);
-                console.log(res.data);
-            })
-            .catch(error => console.log(error));
-        
-    },[])
-    
-    
+        // axios
+        //     .get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+        //     .then(res => {
+        //         // setJumlahBookmark (res.data.length);
+        //         dispatch({type:"setBookmark",payload:res.data.length})
+        //     })
+        //     .catch(error => console.log(error));
+
+    }, [])
     if (localStorage.getItem('name') == null) {
         return (
             <nav className="navbar navbar-expand-lg background-nav">
@@ -51,7 +52,8 @@ export default function Header() {
         const logout = () => {
             localStorage.removeItem('name');
             localStorage.removeItem('id');
-            window.location.href = "/";
+            dispatch({ type: "delete" })
+            // window.location.href = "/";
         }
         return (
             <nav className="navbar navbar-expand-lg background-nav">
@@ -68,38 +70,37 @@ export default function Header() {
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
                                 <Link to="/cart" className="nav-link" aria-current="page" >
-                                    <img src={ICONS + "shopping-cart-free-icon-font.png"} alt="dd" className='img-nav'/>
+                                    <img src={ICONS + "shopping-cart-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahCart}
-                                        <span class="visually-hidden">unread messages</span>
+                                        {/* {jumlahCart} */ state.cart > 0 ? state.cart : ''}
                                     </span>
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/history" className="nav-link" >
-                                    <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav'/>
+                                    <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahHistory}
+                                        {/* {jumlahHistory} */ state.history}
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <Link to="/bookmark" className="nav-link img-link">
-                                    <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav'/>
+                                    <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {jumlahBookmark}
+                                        {/* {jumlahBookmark} */ state.bookmark}
                                         <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <NavDropdown title={<img src={ICONS + "user-free-icon-font.png"} className="img-NavDropdown" alt="dd"/> } id="basic-nav-dropdown" className="p-0 nav-link">
+                                <NavDropdown title={<img src={ICONS + "user-free-icon-font.png"} className="img-NavDropdown" alt="dd" />} id="basic-nav-dropdown" className="p-0 nav-link">
                                     <NavDropdown.Item>
-                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />  Log Out</p>   
+                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />  Log Out</p>
                                     </NavDropdown.Item>
                                 </NavDropdown>
-                            </li> 
+                            </li>
                         </ul>
                     </div>
                 </div>

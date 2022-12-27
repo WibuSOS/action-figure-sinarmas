@@ -5,8 +5,10 @@ import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
+import { Store } from '../../context/UserContext';
 
 export default class ItemList extends Component {
+	static contextType = Store
 	constructor(props) {
 		super(props);
 		this.state = { items: [], cart: [], bookmarks: [] };
@@ -24,23 +26,26 @@ export default class ItemList extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
+		this.loadData()
+	}
 
-		axios
-			.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
-			.then(res => {
-				let cart = res.data;
-				this.setState({ cart });
-			})
-			.catch(error => console.log(error));
-
-		axios
-			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-			.then(res => {
-				let bookmarks = res.data;
-				this.setState({ bookmarks });
-				console.log(bookmarks);
-			})
-			.catch(error => console.log(error));
+	async loadData() {
+		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		try {
+			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+			this.setState({ cart: res.data });
+			jumlahCart = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+			jumlahHistory = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+			jumlahBookmark = res.data.length
+			this.setState({ bookmarks: res.data });
+		} catch (err) { }
+		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
 
 	saveItem({ id, title, sculptor, price, source }) {

@@ -11,36 +11,75 @@ import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
 import History from './pages/Transaction'
+import { useContext } from 'react';
+import UserContext, { Store } from './context/UserContext'
 
+function MultiRouter() {
+  const { state } = useContext(Store)
+
+  return (
+    <Routes>
+      {
+        state.user == null ?
+          (
+            <>
+              <Route path="/" element={<Login />} exact />
+              <Route path="/register" element={<Register />} exact />
+              <Route path="/registerAddress" element={<RegisterAddress />} exact />
+              <Route path="/registerPayment" element={<RegisterPayment />} exact />
+              <Route path="/registerSummary" element={<RegisterSummary />} exact />
+            </>
+          ) : (
+            <>
+              <Route path="/" element={<ItemList />} exact />
+              <Route path="/bookmark" element={<Bookmark />} exact />
+              <Route path="/cart" element={<ShopingCart />} exact />
+              <Route path="/checkout" element={<Checkout />} exact />
+              <Route path="/history" element={<History />} exact />
+            </>
+          )
+      }
+    </Routes>
+  )
+}
 function App() {
-  if (localStorage.getItem('name') == null) {
-    return (
+  return (
+    <UserContext>
       <BrowserRouter>
         <Header />
-        <Routes>
-          <Route path="/" element={<Login />} exact />
-          <Route path="/register" element={<Register />} exact />
-          <Route path="/registerAddress" element={<RegisterAddress />} exact />
-          <Route path="/registerPayment" element={<RegisterPayment />} exact />
-          <Route path="/registerSummary" element={<RegisterSummary />} exact />
-        </Routes>
+        <MultiRouter />
       </BrowserRouter>
-    )
-  }
-  else {
-    return (
-      <BrowserRouter>
-        <Header />
-        <Routes>
-          <Route path="/" element={<ItemList />} exact />
-          <Route path="/bookmark" element={<Bookmark />} exact />
-          <Route path="/cart" element={<ShopingCart />} exact />
-          <Route path="/checkout" element={<Checkout />} exact />
-          <Route path="/history" element={<History />} exact />
-        </Routes>
-      </BrowserRouter>
-    )
-  }
+    </UserContext>
+  )
+
+  // if (localStorage.getItem('name') == null) {
+  //   return (
+  //     <BrowserRouter>
+  //       <Header />
+  //       <Routes>
+  //         <Route path="/" element={<Login />} exact />
+  //         <Route path="/register" element={<Register />} exact />
+  //         <Route path="/registerAddress" element={<RegisterAddress />} exact />
+  //         <Route path="/registerPayment" element={<RegisterPayment />} exact />
+  //         <Route path="/registerSummary" element={<RegisterSummary />} exact />
+  //       </Routes>
+  //     </BrowserRouter>
+  //   )
+  // }
+  // else {
+  //   return (
+  //     <BrowserRouter>
+  //       <Header />
+  //       <Routes>
+  //         <Route path="/" element={<ItemList />} exact />
+  //         <Route path="/bookmark" element={<Bookmark />} exact />
+  //         <Route path="/cart" element={<ShopingCart />} exact />
+  //         <Route path="/checkout" element={<Checkout />} exact />
+  //         <Route path="/history" element={<History />} exact />
+  //       </Routes>
+  //     </BrowserRouter>
+  //   )
+  // }
 }
 
 export default App;
