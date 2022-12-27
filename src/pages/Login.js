@@ -5,8 +5,10 @@ import axios from 'axios'
 import { API_URL } from '../const'
 import swal from "sweetalert";
 import { Navigate } from 'react-router-dom';
+import {Store} from '../context/UserContext'
 
 export default class Login extends Component {
+    static contextType = Store
     constructor(props) {
 		super(props);
 		this.state ={
@@ -52,14 +54,13 @@ export default class Login extends Component {
                         
                         
                     }
-                    ).then(()=>{localStorage.setItem("name",res.data[0].name); localStorage.setItem("id",res.data[0].id); window.location.href="/"})
-                    //.then(()=>{localStorage.setItem("name",res.data[0].name) ; this.setState({login : true})})
-                    // Somewhere in your code, e.g. inside a handler:
+                    ).then(()=>{
+                        localStorage.setItem("name",res.data[0].name); 
+                        localStorage.setItem("id", res.data[0].id); 
+                        // window.location.href="/"
+                        this.context.dispatch({type:"set",payload:res.data[0].name})
+                    })
                     
-                    // const navigate = useNavigate();
-                    // navigate("/");
-                    
-                    // setTimeout(function(){ window.location.href="/register"},1500)
 
                         
                 }
@@ -73,10 +74,10 @@ export default class Login extends Component {
             <Navigate to="/" replace={true} />
         )
     }
-    else if(localStorage.getItem('name')!=null)
-        {
-            window.location.href="/"
-        }
+    // else if(localStorage.getItem('name')!=null)
+    //     {
+    //         window.location.href="/"
+    //     }
     else{  
         return (
                 <div>  
