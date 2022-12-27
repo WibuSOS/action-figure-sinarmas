@@ -80,8 +80,7 @@ export default function Header() {
                                 <Link to="/history" className="nav-link" >
                                     <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {/* {jumlahHistory} */ state.history}
-                                        <span class="visually-hidden">unread messages</span>
+                                        {/* {jumlahHistory} */ state.history > 0 ? state.history : ''}                            
                                     </span>
                                 </Link>
                             </li>
@@ -89,8 +88,7 @@ export default function Header() {
                                 <Link to="/bookmark" className="nav-link img-link">
                                     <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {/* {jumlahBookmark} */ state.bookmark}
-                                        <span class="visually-hidden">unread messages</span>
+                                        {/* {jumlahBookmark} */ state.bookmark > 0 ? state.bookmark : ''}      
                                     </span>
                                 </Link>
                             </li>
