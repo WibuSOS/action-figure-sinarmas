@@ -69,6 +69,16 @@
       "price": 720000,
       "jumlah_barang": 1,
       "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+    },
+    {
+      "id": 3,
+      "id_person": "1",
+      "id_item": 1,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "jumlah_barang": 1,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     }
   ],
   "cart": [
