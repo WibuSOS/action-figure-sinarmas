@@ -5,6 +5,7 @@ import { ICONS, API_URL } from '../const'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
 import { useStore } from '../context/UserContext';
+import { Button } from 'react-bootstrap';
 
 
 export default function Header() {
@@ -95,7 +96,13 @@ export default function Header() {
                             <li className="nav-item">
                                 <NavDropdown title={<img src={ICONS + "user-free-icon-font.png"} className="img-NavDropdown" alt="dd" />} id="basic-nav-dropdown" className="p-0 nav-link">
                                     <NavDropdown.Item>
-                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />  Log Out</p>
+                                    <Link to="/address" className='img-font'>
+                                        <img src={ICONS + "address2.png"} className='img-dropdown img-font' />Address
+                                    </Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item>
+                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />   Log Out</p>
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             </li>

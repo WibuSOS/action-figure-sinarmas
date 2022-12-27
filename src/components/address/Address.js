@@ -4,7 +4,7 @@ import './Address.css'
 import axios from 'axios'
 import { API_URL } from '../../const'
 import AddressList from './AddressList'
-
+import AddressAction from './AddressAction'
 export default class Address extends Component {
     constructor(props) {
         super(props);
@@ -40,6 +40,7 @@ export default class Address extends Component {
                     {
                         this.state.address.length > 0 &&
                         <Col lg={4} className='mt-3 mt-lg-0'>
+                            <AddressAction address={this.state.address}/>
                         </Col>
                     }
                 </Row>
