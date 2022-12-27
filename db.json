@@ -71,7 +71,18 @@
       "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
     }
   ],
-  "cart": [],
+  "cart": [
+    {
+      "id": 1,
+      "id_item": 1,
+      "id_person": "1",
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "jumlah_barang": 1,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+    }
+  ],
   "profiles": [
     {
       "id": 1,
@@ -88,6 +99,28 @@
       "email": "julianto@pega.com",
       "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
       "source": "profile1.png"
+    }
+  ],
+  "address":[
+    {
+      "id":1,
+      "id_person":1,
+      "province":"Jakarta Barat",
+      "city" :"DKI JAKARTA",
+      "address":"Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Main"
+    },
+    {
+      "id":2,
+      "id_person":1,
+      "province":"Jakarta Barat",
+      "city" :"DKI JAKARTA",
+      "address":"Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Not Main"
     }
   ],
   "history": [

@@ -15,13 +15,29 @@ export default function Header() {
         axios
             .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
             .then(res => {
-                setJumlahCart (res.data.length);
+                let data = 0;
+                if(res.data.length == 0)
+                    { 
+                        data="";
+                    }
+                else{
+                    data = res.data.length
+                }
+                setJumlahCart (data);
             })
             .catch(error => console.log(error));
         axios
             .get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
             .then(res => {
-                setJumlahHistory (res.data.length);
+                let data = 0;
+                if(res.data.length == 0)
+                    { 
+                        data="";
+                    }
+                else{
+                    data = res.data.length
+                }
+                setJumlahHistory (data);
 
             })
             .catch(error => console.log(error));
@@ -29,7 +45,15 @@ export default function Header() {
         axios
             .get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
             .then(res => {
-                setJumlahBookmark (res.data.length);
+                let data = 0;
+                if(res.data.length == 0)
+                    { 
+                        data="";
+                    }
+                else{
+                    data = res.data.length
+                }
+                setJumlahBookmark (data);
                 console.log(setJumlahBookmark);
                 console.log(res.data);
             })
@@ -71,7 +95,6 @@ export default function Header() {
                                     <img src={ICONS + "shopping-cart-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
                                         {jumlahCart}
-                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
@@ -80,7 +103,6 @@ export default function Header() {
                                     <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
                                         {jumlahHistory}
-                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>
@@ -89,7 +111,6 @@ export default function Header() {
                                     <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav'/>
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
                                         {jumlahBookmark}
-                                        <span class="visually-hidden">unread messages</span>
                                     </span>
                                 </Link>
                             </li>

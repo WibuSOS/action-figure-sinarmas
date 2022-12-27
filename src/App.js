@@ -11,6 +11,7 @@ import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
 import History from './pages/Transaction'
+import Address from './components/address/Address';
 
 function App() {
   if (localStorage.getItem('name') == null) {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/cart" element={<ShopingCart />} exact />
           <Route path="/checkout" element={<Checkout />} exact />
           <Route path="/history" element={<History />} exact />
+          <Route path="/address" element={<Address/>}exact />
         </Routes>
       </BrowserRouter>
     )
