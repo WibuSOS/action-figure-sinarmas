@@ -1,36 +1,48 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS } from '../../const'
+import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS, CART_URL } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
+
 export default class ItemList extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { items: [], bookmarks: [] };
+		this.state = { items: [], cart: [], bookmarks: [] };
 	}
 
 	componentDidMount() {
+		this.getResource();
+	}
+
+	getResource() {
 		axios
 			.get(FIGURES_URL)
 			.then(res => {
 				let items = res.data;
 				this.setState({ items });
-
 			})
 			.catch(error => console.log(error));
 
 		axios
-			.get(API_URL + "/bookmark?id_persons=" + localStorage.getItem("id"))
+			.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
+			.then(res => {
+				let cart = res.data;
+				this.setState({ cart });
+			})
+			.catch(error => console.log(error));
+
+		axios
+			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
 			.then(res => {
 				let bookmarks = res.data;
 				this.setState({ bookmarks });
 				console.log(bookmarks);
 			})
 			.catch(error => console.log(error));
-
 	}
+
 	saveItem({ id, title, sculptor, price, source }) {
 		axios
 			.get(API_URL + "/bookmark?_sort=id&_order=desc")
@@ -43,9 +55,10 @@ export default class ItemList extends Component {
 				else {
 					id_bookmark = res.data[0].id + 1;
 				}
+
 				const bookmark = {
 					id: id_bookmark,
-					id_persons: localStorage.getItem("id"),
+					id_person: localStorage.getItem("id"),
 					id_item: id,
 					title: title,
 					sculptor: sculptor,
@@ -53,57 +66,60 @@ export default class ItemList extends Component {
 					jumlah_barang: 1,
 					source: source
 				};
+
 				axios
 					.post(API_URL + "/bookmark", bookmark)
-					.then(res => {
-
+					.then(() => {
+						swal({
+							title: "Saved Item",
+							text: "Saved Item",
+							icon: "success",
+							button: false,
+							timer: 1500,
+						})
+							.then(() => this.getResource());
 					})
 					.catch(error => console.log(error));
-				swal({
-					title: "Saved Item",
-					text: "Saved Item",
-					icon: "success",
-					button: false,
-					timer: 1500,
-				}).then(() => { window.location.href = "/" });
 			})
 			.catch(error => console.log(error));
 	}
-	addToCart({ id_item, title, sculptor, price, source }) {
+
+	addToCart({ id, title, sculptor, price, source }) {
 		axios
-			.get(API_URL + "/cart?_sort=id&_order=desc")
+			.get(`${CART_URL}?_sort=id&_order=desc`)
 			.then(res => {
-				let id_chart
+				let id_cart
 				if (res.data.length === 0) {
-					id_chart = 1
+					id_cart = 1
 				}
 				else {
-					id_chart = res.data[0].id + 1;
+					id_cart = res.data[0].id + 1;
 				}
 
-				const charts = {
-					id: id_chart,
-					id_item: id_item,
-					id_persons: localStorage.getItem("id"),
+				const cart = {
+					id: id_cart,
+					id_item: id,
+					id_person: localStorage.getItem("id"),
 					title: title,
 					sculptor: sculptor,
 					price: price,
 					jumlah_barang: 1,
 					source: source
 				};
-				axios
-					.post(API_URL + "/cart", charts)
-					.then(res => {
 
+				axios
+					.post(CART_URL, cart)
+					.then(() => {
+						swal({
+							title: "Sukses Add to Cart",
+							text: "Sukses Add to Cart",
+							icon: "success",
+							button: false,
+							timer: 1500,
+						})
+							.then(() => this.getResource());
 					})
 					.catch(error => console.log(error));
-				swal({
-					title: "Sukses Add to Cart",
-					text: "Sukses Add to Cart",
-					icon: "success",
-					button: false,
-					timer: 1500,
-				}).then(() => { window.location.href = "/" })
 			})
 			.catch(error => console.log(error));
 	}
@@ -113,13 +129,7 @@ export default class ItemList extends Component {
 		localStorage.removeItem('id');
 		window.location.href = "/";
 	}
-	status(status) {
-		if (this.isSaved === true) {
-			return "Unsaved"
-		} else if (this.isSaved === false) {
-			return "Saved"
-		}
-	}
+
 	render() {
 		let itemList = this.state.items.map(
 			item => (
@@ -132,7 +142,11 @@ export default class ItemList extends Component {
 							<Card.Text >
 								{`By ${item.sculptor}`}
 							</Card.Text>
-							<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							{
+								this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
+									<Button variant='dark' disabled>In cart</Button> :
+									<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							}
 							<Button onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
 								<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
 							</Button>
@@ -144,7 +158,6 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
-				<Button onClick={() => this.logout()}>Log Out</Button>
 				<Row>
 					{itemList}
 				</Row>

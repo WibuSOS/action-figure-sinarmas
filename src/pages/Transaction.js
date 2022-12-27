@@ -9,7 +9,7 @@ export default function Transaction() {
     useEffect(() => {
         const getData = async () => {
             try {
-                let find = "userId=1"
+                let find = "id_person="+localStorage.getItem("id") 
                 if (tab === 1) {
                     find += ("&status=1")
                 } else if (tab === 2) {

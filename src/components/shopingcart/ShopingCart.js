@@ -14,13 +14,14 @@ export default class ShopingCart extends Component {
 
     componentDidMount() {
         axios
-            .get(API_URL + "/Cart?id_persons=" + localStorage.getItem("id"))
+            .get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
             .then(res => {
                 let items = res.data;
                 this.setState({ items });
             })
             .catch(error => console.log(error));
     }
+
     updateData = async (item) => {
         try {
             const res = await axios.put(API_URL + "/cart/" + item.id, item)
@@ -58,7 +59,7 @@ export default class ShopingCart extends Component {
                 }
             } else if (type === "deleteCart") {
                 this.deleteData(items[index])
-                window.location.href = "/Cart"
+                window.location.href = "/cart"
             }
         }
     }
@@ -67,16 +68,19 @@ export default class ShopingCart extends Component {
         return (
             <Container className='mt-3'>
                 <Row>
-                    <Col lg={8}>
+                    <Col lg={this.state.items.length > 0 ? 8 : 12}>
                         <Row className='mb-3'>
                             <Col>
                                 <CartList items={this.state.items} view={this.state.view} change={this.changeData} />
                             </Col>
                         </Row>
                     </Col>
-                    <Col lg={4} className='mt-3 mt-lg-0'>
-                        <TotalPrice items={this.state.items} view={this.state.view} proceedBtn={this.state.proceedBtn} />
-                    </Col>
+                    {
+                        this.state.items.length > 0 &&
+                        <Col lg={4} className='mt-3 mt-lg-0'>
+                            <TotalPrice items={this.state.items} view={this.state.view} proceedBtn={this.state.proceedBtn} />
+                        </Col>
+                    }
                 </Row>
             </Container>
         )
