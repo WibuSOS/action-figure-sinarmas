@@ -5,6 +5,7 @@ import { ICONS, API_URL } from '../const'
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
 import { useStore } from '../context/UserContext';
+import { Button } from 'react-bootstrap';
 
 
 export default function Header() {
@@ -80,8 +81,7 @@ export default function Header() {
                                 <Link to="/history" className="nav-link" >
                                     <img src={ICONS + "file-invoice-dollar-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {/* {jumlahHistory} */ state.history}
-                                        <span class="visually-hidden">unread messages</span>
+                                        {/* {jumlahHistory} */ state.history > 0 ? state.history : ''}                            
                                     </span>
                                 </Link>
                             </li>
@@ -89,15 +89,20 @@ export default function Header() {
                                 <Link to="/bookmark" className="nav-link img-link">
                                     <img src={ICONS + "bookmark-free-icon-font.png"} alt="dd" className='img-nav' />
                                     <span class="position-absolute top-10 start-1 translate-middle badge rounded-pill bg-danger">
-                                        {/* {jumlahBookmark} */ state.bookmark}
-                                        <span class="visually-hidden">unread messages</span>
+                                        {/* {jumlahBookmark} */ state.bookmark > 0 ? state.bookmark : ''}      
                                     </span>
                                 </Link>
                             </li>
                             <li className="nav-item">
                                 <NavDropdown title={<img src={ICONS + "user-free-icon-font.png"} className="img-NavDropdown" alt="dd" />} id="basic-nav-dropdown" className="p-0 nav-link">
                                     <NavDropdown.Item>
-                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />  Log Out</p>
+                                    <Link to="/address" className='img-font'>
+                                        <img src={ICONS + "address2.png"} className='img-dropdown img-font' />Address
+                                    </Link>
+                                    </NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item>
+                                        <p onClick={() => logout()}><img src={ICONS + "log-out.png"} alt="dd" className='img-dropdown' />   Log Out</p>
                                     </NavDropdown.Item>
                                 </NavDropdown>
                             </li>

@@ -4,14 +4,18 @@ import { FIGURES_DIR, API_URL, CART_URL } from '../../const'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { } from "react-router-dom";
 import swal from 'sweetalert';
-
+import { Store } from '../../context/UserContext';
 export default class Bookmark extends Component {
+	static contextType = Store
 	constructor(props) {
 		super(props);
 		this.state = { items: [] };
 	}
 
 	componentDidMount() {
+		this.getResource();
+	}
+	getResource() {
 		axios
 			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
 			.then(res => {
@@ -19,12 +23,25 @@ export default class Bookmark extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
+		this.loadData()
 	}
-	addToCart(itemId) {
-	}
-	logout() {
-		localStorage.removeItem('name');
-		window.location.href = "/";
+	async loadData() {
+		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		try {
+			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+			this.setState({ cart: res.data });
+			jumlahCart = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+			jumlahHistory = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+			jumlahBookmark = res.data.length
+			this.setState({ bookmarks: res.data });
+		} catch (err) { }
+		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
 	handleDelete = async (itemId) => {
 		axios
@@ -36,7 +53,7 @@ export default class Bookmark extends Component {
 					icon: "success",
 					button: false,
 					timer: 1000,
-				}).then(() => { window.location.href = "/bookmark" })
+				}).then(() => this.getResource());
 			})
 			.catch(error => console.log(error));
 	}
@@ -62,7 +79,7 @@ export default class Bookmark extends Component {
 							icon: "success",
 							button: false,
 							timer: 1500,
-						});
+						}).then(() => this.getResource());;
 					})
 					.catch(error => console.log(error));
 			})

@@ -6,6 +6,7 @@ import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
+import Banner from './Banner';
 
 export default class ItemList extends Component {
 	static contextType = Store
@@ -163,9 +164,14 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
-				<Row>
-					{itemList}
+				<Row className='pb-3 pt-3'>
+					<Banner />
 				</Row>
+				<Container fluid>
+					<Row>
+						{itemList}
+					</Row>
+				</Container>
 				<ItemTab itemList={itemList} />
 			</Container>
 		)

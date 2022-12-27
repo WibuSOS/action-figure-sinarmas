@@ -11,6 +11,7 @@ import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
 import History from './pages/Transaction'
+import Address from './components/address/Address';
 import { useContext } from 'react';
 import UserContext, { Store } from './context/UserContext'
 
@@ -36,6 +37,7 @@ function MultiRouter() {
               <Route path="/cart" element={<ShopingCart />} exact />
               <Route path="/checkout" element={<Checkout />} exact />
               <Route path="/history" element={<History />} exact />
+              <Route path="/address" element={<Address />} exact />
             </>
           )
       }
