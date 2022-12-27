@@ -29,7 +29,7 @@ export default class Bookmark extends Component {
 	handleDelete = async (itemId) => {
 		axios
 			.delete(API_URL + "/bookmark/" + itemId)
-			.then(res => {
+			.then(() => {
 				swal({
 					title: "Delete Sukses",
 					text: "Delete",
@@ -55,7 +55,7 @@ export default class Bookmark extends Component {
 				};
 				axios
 					.post(CART_URL, cart)
-					.then(res => {
+					.then(() => {
 						swal({
 							title: "Sukses Masuk Keranjang",
 							text: "Sukses Masuk Keranjang ",

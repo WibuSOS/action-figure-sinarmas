@@ -69,18 +69,17 @@ export default class ItemList extends Component {
 
 				axios
 					.post(API_URL + "/bookmark", bookmark)
-					.then(() => { })
+					.then(() => {
+						swal({
+							title: "Saved Item",
+							text: "Saved Item",
+							icon: "success",
+							button: false,
+							timer: 1500,
+						})
+							.then(() => this.getResource());
+					})
 					.catch(error => console.log(error));
-
-				swal({
-					title: "Saved Item",
-					text: "Saved Item",
-					icon: "success",
-					button: false,
-					timer: 1500,
-				}).then(() => {
-					this.getResource();
-				});
 			})
 			.catch(error => console.log(error));
 	}
@@ -110,18 +109,17 @@ export default class ItemList extends Component {
 
 				axios
 					.post(CART_URL, cart)
-					.then(() => { })
+					.then(() => {
+						swal({
+							title: "Sukses Add to Cart",
+							text: "Sukses Add to Cart",
+							icon: "success",
+							button: false,
+							timer: 1500,
+						})
+							.then(() => this.getResource());
+					})
 					.catch(error => console.log(error));
-
-				swal({
-					title: "Sukses Add to Cart",
-					text: "Sukses Add to Cart",
-					icon: "success",
-					button: false,
-					timer: 1500,
-				}).then(() => {
-					this.getResource();
-				})
 			})
 			.catch(error => console.log(error));
 	}
