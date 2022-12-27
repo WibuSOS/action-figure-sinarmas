@@ -15,7 +15,6 @@ export default class ItemList extends Component {
 
 	componentDidMount() {
 		this.getResource();
-		this.loadData()
 	}
 
 	getResource() {
@@ -24,37 +23,30 @@ export default class ItemList extends Component {
 			.then(res => {
 				let items = res.data;
 				this.setState({ items });
-				
 			})
 			.catch(error => console.log(error));
-			this.loadData()
-
-		
+		this.loadData()
 	}
-	async loadData(){
+
+	async loadData() {
 		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
-        try{
-           const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-		   this.setState({ cart:res.data });
-           jumlahCart = res.data.length
-        }catch(err){
-
-        }
-        try{
-            const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-            jumlahHistory = res.data.length
-         }catch(err){
- 
-         }
-         try{
-            const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-            jumlahBookmark = res.data.length
-			this.setState({ bookmarks:res.data });
-         }catch(err){
- 
-         }
-		this.context.dispatch({type:"setDefault",payload:{bookmark:jumlahBookmark, history:jumlahHistory, cart:jumlahCart}})
+		try {
+			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+			this.setState({ cart: res.data });
+			jumlahCart = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+			jumlahHistory = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+			jumlahBookmark = res.data.length
+			this.setState({ bookmarks: res.data });
+		} catch (err) { }
+		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
+
 	saveItem({ id, title, sculptor, price, source }) {
 		axios
 			.get(API_URL + "/bookmark?_sort=id&_order=desc")
