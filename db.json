@@ -168,6 +168,29 @@
     },
     {
       "id": 4
+    },
+    {
+      "id": 5,
+      "id_person": "1",
+      "paycode": "33333",
+      "orderID": "dadasd",
+      "tanggal": "20221127",
+      "jumlah": 2,
+      "detail": [
+        {
+          "nama": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+          "jumlah": 1,
+          "harga": 2650000,
+          "gambar": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+        },
+        {
+          "nama": "Nendoroid Yor Forger - SPY x FAMILY",
+          "jumlah": 1,
+          "harga": 650000,
+          "gambar": "nendoroid-yor-forger-spy-x-family.jpg"
+        }
+      ],
+      "status": 1
     }
   ]
 }
