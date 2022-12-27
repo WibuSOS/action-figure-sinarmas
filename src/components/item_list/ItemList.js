@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS } from '../../const'
+import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS, CART_URL } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { ItemTab } from '../item_tab/ItemTab';
@@ -9,10 +9,14 @@ import swal from 'sweetalert';
 export default class ItemList extends Component {
 	constructor(props) {
 		super(props);
-		this.state = { items: [], bookmarks: [] };
+		this.state = { items: [], cart: [], bookmarks: [] };
 	}
 
 	componentDidMount() {
+		this.getResource();
+	}
+
+	getResource() {
 		axios
 			.get(FIGURES_URL)
 			.then(res => {
@@ -21,14 +25,13 @@ export default class ItemList extends Component {
 			})
 			.catch(error => console.log(error));
 
-		// axios
-		// 	.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
-		// 	.then(res => {
-		// 		let cart = res.data;
-		// 		if (!cart || (cart && cart.length <= 0)) { window.location.href = '/' }
-		// 		this.setState({ cart });
-		// 	})
-		// 	.catch(error => console.log(error));
+		axios
+			.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
+			.then(res => {
+				let cart = res.data;
+				this.setState({ cart });
+			})
+			.catch(error => console.log(error));
 
 		axios
 			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
@@ -75,14 +78,16 @@ export default class ItemList extends Component {
 					icon: "success",
 					button: false,
 					timer: 1500,
-				}).then(() => { window.location.href = "/" });
+				}).then(() => {
+					this.getResource();
+				});
 			})
 			.catch(error => console.log(error));
 	}
 
 	addToCart({ id, title, sculptor, price, source }) {
 		axios
-			.get(API_URL + "/cart?_sort=id&_order=desc")
+			.get(`${CART_URL}?_sort=id&_order=desc`)
 			.then(res => {
 				let id_cart
 				if (res.data.length === 0) {
@@ -104,7 +109,7 @@ export default class ItemList extends Component {
 				};
 
 				axios
-					.post(API_URL + "/cart", cart)
+					.post(CART_URL, cart)
 					.then(() => { })
 					.catch(error => console.log(error));
 
@@ -114,7 +119,9 @@ export default class ItemList extends Component {
 					icon: "success",
 					button: false,
 					timer: 1500,
-				}).then(() => { window.location.href = "/" })
+				}).then(() => {
+					this.getResource();
+				})
 			})
 			.catch(error => console.log(error));
 	}
@@ -137,7 +144,11 @@ export default class ItemList extends Component {
 							<Card.Text >
 								{`By ${item.sculptor}`}
 							</Card.Text>
-							<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							{
+								this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
+									<Button variant='dark' disabled>In cart</Button> :
+									<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+							}
 							<Button onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
 								<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
 							</Button>
