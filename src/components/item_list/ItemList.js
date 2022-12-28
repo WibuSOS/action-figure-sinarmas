@@ -34,11 +34,11 @@ export default class ItemList extends Component {
 		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
 		try {
 			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-			if(res.data.length!==0){
+			if (res.data.length !== 0) {
 				this.setState({ cart: res.data[0].details });
 				jumlahCart = res.data[0].details.length
 			}
-			
+
 		} catch (err) { }
 		try {
 			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
@@ -94,31 +94,31 @@ export default class ItemList extends Component {
 	}
 
 	async addToCart({ id, title, sculptor, price, source }) {
-		try{
+		try {
 			const resGet = await axios.get(`${CART_URL}?id_person=${localStorage.getItem("id")}`)
-			if(resGet.data.length === 0){
+			if (resGet.data.length === 0) {
 				const cart = {
-					id_person:localStorage.getItem("id"),
-					details:[
+					id_person: localStorage.getItem("id"),
+					details: [
 						{
-							id_person:localStorage.getItem("id"),
+							id_person: localStorage.getItem("id"),
 							id_item: id,
-							title:title,
+							title: title,
 							sculptor: sculptor,
 							price: price,
 							jumlah_barang: 1,
 							source: source
 						}
 					],
-					
+
 				};
 				const res = await axios.post(`${CART_URL}`, cart)
-			}else{
+			} else {
 				const data = resGet.data[0]
 				const cart = {
-					id_person:localStorage.getItem("id"),
+					id_person: localStorage.getItem("id"),
 					id_item: id,
-					title:title,
+					title: title,
 					sculptor: sculptor,
 					price: price,
 					jumlah_barang: 1,
@@ -126,7 +126,7 @@ export default class ItemList extends Component {
 				}
 				data.details.push(cart)//up
 				const res = await axios.put(`${CART_URL}/${data.id}`, data)
-				
+
 			}
 			await swal({
 				title: "Sukses Add to Cart",
@@ -136,7 +136,7 @@ export default class ItemList extends Component {
 				timer: 1500,
 			})
 			this.getResource()
-		}catch(err){
+		} catch (err) {
 			await swal({
 				title: "Gagal Add to Cart",
 				text: "Galal Add to Cart",
@@ -145,7 +145,7 @@ export default class ItemList extends Component {
 				timer: 1500,
 			})
 		}
-		
+
 		// axios
 		// 	.get(`${CART_URL}?_sort=id&_order=desc`)
 		// 	.then(res => {
@@ -222,11 +222,9 @@ export default class ItemList extends Component {
 				<Row className='pb-3 pt-3 shadow'>
 					<Banner />
 				</Row>
-				<Container fluid className='pb-5 pt-5'>
-					<Row >
-						{itemList}
-					</Row>
-				</Container>
+				<Row className='pt-5'>
+					{itemList}
+				</Row>
 				<ItemTab itemList={itemList} />
 			</Container>
 		)
