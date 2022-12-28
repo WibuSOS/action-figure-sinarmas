@@ -3,7 +3,7 @@ import axios from 'axios'
 import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS, CART_URL } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { ItemTab } from '../item_tab/ItemTab';
+import { ItemTab } from './ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
 import Banner from './Banner';
