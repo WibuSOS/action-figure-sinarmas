@@ -19,6 +19,7 @@ export default class Bookmark extends Component {
 		axios
 			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
 			.then(res => {
+				console.log(res.data)
 				let items = res.data;
 				this.setState({ items });
 			})
@@ -26,22 +27,22 @@ export default class Bookmark extends Component {
 		this.loadData()
 	}
 	async loadData() {
-		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
-		try {
-			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-			this.setState({ cart: res.data });
-			jumlahCart = res.data.length
-		} catch (err) { }
-		try {
-			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-			jumlahHistory = res.data.length
-		} catch (err) { }
-		try {
-			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-			jumlahBookmark = res.data.length
-			this.setState({ bookmarks: res.data });
-		} catch (err) { }
-		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
+		// let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		// try {
+		// 	const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+		// 	this.setState({ cart: res.data });
+		// 	jumlahCart = res.data.length
+		// } catch (err) { }
+		// try {
+		// 	const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+		// 	jumlahHistory = res.data.length
+		// } catch (err) { }
+		// try {
+		// 	const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+		// 	jumlahBookmark = res.data.length
+		// 	this.setState({ bookmarks: res.data });
+		// } catch (err) { }
+		// this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
 	handleDelete = async (itemId) => {
 		axios
@@ -58,32 +59,67 @@ export default class Bookmark extends Component {
 			.catch(error => console.log(error));
 	}
 	handleAddToCart = async (id_item, title, sculptor, price, source) => {
-		axios
-			.get(`${CART_URL}?_sort=id&_order=desc`)
-			.then(() => {
+		try{
+			const resGet = await axios.get(`${CART_URL}?id_person=${localStorage.getItem("id")}`)
+			if(resGet.data.length === 0){
 				const cart = {
-					id_item: id_item,
-					id_person: localStorage.getItem("id"),
-					title: title,
-					sculptor: sculptor,
-					price: price,
-					jumlah_barang: 1,
-					source: source
+					id_person:localStorage.getItem("id"),
+					details:[
+						{
+							id_person:localStorage.getItem("id"),
+							id_item: id_item,
+							title:title,
+							sculptor: sculptor,
+							price: price,
+							jumlah_barang: 1,
+							source: source
+						}
+					],
+					
 				};
-				axios
-					.post(CART_URL, cart)
-					.then(() => {
-						swal({
-							title: "Sukses Masuk Keranjang",
-							text: "Sukses Masuk Keranjang ",
-							icon: "success",
-							button: false,
-							timer: 1500,
-						}).then(() => this.getResource());;
+				const res = await axios.post(`${CART_URL}`, cart)
+				await swal({
+					title: "Sukses Add to Cart",
+					text: "Sukses Add to Cart",
+					icon: "success",
+					button: false,
+					timer: 1500,
+				})
+				this.getResource()
+			}else{
+				const data = resGet.data[0]
+				if(data.details.findIndex(item=>item.id_item==id_item)){
+					const cart = {
+						id_person:localStorage.getItem("id"),
+						id_item: id_item,
+						title:title,
+						sculptor: sculptor,
+						price: price,
+						jumlah_barang: 1,
+						source: source
+					}
+					data.details.push(cart)
+					const res = await axios.put(`${CART_URL}/${data.id}`, data)
+					await swal({
+						title: "Sukses Add to Cart",
+						text: "Sukses Add to Cart",
+						icon: "success",
+						button: false,
+						timer: 1500,
 					})
-					.catch(error => console.log(error));
+					this.getResource()
+				}
+			}
+			
+		}catch(err){
+			await swal({
+				title: "Gagal Add to Cart",
+				text: "Galal Add to Cart",
+				icon: "error",
+				button: false,
+				timer: 1500,
 			})
-			.catch(error => console.log(error));
+		}
 	}
 
 	render() {
@@ -110,7 +146,10 @@ export default class Bookmark extends Component {
 						<div style={{ borderTop: "2px solid black", marginBottom: "20px" }}>
 						</div>
 						<Row>
-							{itemList}
+							{this.state.items == 0?<>
+								<div className="text-center">Bookmark kosong</div>
+							</>:
+							itemList}
 						</Row>
 					</Container>
 				</div>

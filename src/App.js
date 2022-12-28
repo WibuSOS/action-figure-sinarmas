@@ -12,12 +12,34 @@ import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
 import History from './pages/Transaction'
 import Address from './components/address/Address';
-import { useContext } from 'react';
-import UserContext, { Store } from './context/UserContext'
-
+import { useEffect } from 'react';
+import UserContext, { useStore } from './context/UserContext'
+import axios from 'axios'
+import { API_URL } from './const';
 function MultiRouter() {
-  const { state } = useContext(Store)
-
+  const { state,dispatch } = useStore()
+  useEffect(()=>{
+    
+    loadData()
+  },[])
+  const loadData= async()=>{
+		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		try {
+			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+			if(res.data.length!==0){
+				jumlahCart = res.data[0].details.length
+			}
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+      jumlahHistory = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+			jumlahBookmark = res.data.length
+		} catch (err) { }
+		dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
+	}
   return (
     <Routes>
       {
