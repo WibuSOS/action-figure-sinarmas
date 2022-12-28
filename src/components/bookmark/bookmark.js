@@ -9,40 +9,36 @@ export default class Bookmark extends Component {
 	static contextType = Store
 	constructor(props) {
 		super(props);
-		this.state = { items: [] };
+		this.state = { items: [] , cart:[]};
 	}
 
 	componentDidMount() {
 		this.getResource();
 	}
 	getResource() {
-		axios
-			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-			.then(res => {
-				console.log(res.data)
-				let items = res.data;
-				this.setState({ items });
-			})
-			.catch(error => console.log(error));
 		this.loadData()
 	}
 	async loadData() {
-		// let jumlahCart, jumlahHistory, jumlahBookmark = 0;
-		// try {
-		// 	const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-		// 	this.setState({ cart: res.data });
-		// 	jumlahCart = res.data.length
-		// } catch (err) { }
-		// try {
-		// 	const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-		// 	jumlahHistory = res.data.length
-		// } catch (err) { }
-		// try {
-		// 	const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-		// 	jumlahBookmark = res.data.length
-		// 	this.setState({ bookmarks: res.data });
-		// } catch (err) { }
-		// this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
+		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		try {
+			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+			if(res.data.length!==0){
+				this.setState({ cart: res.data[0].details });
+				jumlahCart = res.data[0].details.length
+			}
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+			jumlahHistory = res.data.length
+		} catch (err) { }
+		try {
+			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+			jumlahBookmark = res.data.length
+			this.setState({ bookmarks: res.data });
+			let items = res.data;
+			this.setState({ items });
+		} catch (err) { }
+		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
 	handleDelete = async (itemId) => {
 		axios
@@ -58,7 +54,7 @@ export default class Bookmark extends Component {
 			})
 			.catch(error => console.log(error));
 	}
-	handleAddToCart = async (id_item, title, sculptor, price, source) => {
+	handleAddToCart = async (id,id_item, title, sculptor, price, source) => {
 		try{
 			const resGet = await axios.get(`${CART_URL}?id_person=${localStorage.getItem("id")}`)
 			if(resGet.data.length === 0){
@@ -85,6 +81,7 @@ export default class Bookmark extends Component {
 					button: false,
 					timer: 1500,
 				})
+				const resDel = await axios.delete(API_URL + "/bookmark/" + id)
 				this.getResource()
 			}else{
 				const data = resGet.data[0]
@@ -107,6 +104,7 @@ export default class Bookmark extends Component {
 						button: false,
 						timer: 1500,
 					})
+					const resDel = await axios.delete(API_URL + "/bookmark/" + id)
 					this.getResource()
 				}
 			}
@@ -127,10 +125,14 @@ export default class Bookmark extends Component {
 			item => (
 				<Col key={item.id} sm={6} md={4} lg={2}>
 					<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} />
-					<div className='d-flex justify-content-around' style={{ marginTop: "10px", }}>
-						<Button variant="warning" style={{ width: "120px", backgroundColor: "#FFB13D" }} onClick={() => this.handleAddToCart(item.id_item, item.title, item.sculptor, item.price, item.source)} >Add To Cart</Button>{' '}
-
-					</div>
+					{
+									this.state.cart.map(cart_item => cart_item.id_item).includes(item.id_item) ?
+									<div className='d-flex justify-content-around' style={{ marginTop: "10px", }}>
+									<Button variant='dark' disabled>Already In cart</Button> </div>:
+									<div className='d-flex justify-content-around' style={{ marginTop: "10px", }}>
+									<Button variant="warning" style={{ width: "120px", backgroundColor: "#FFB13D" }} onClick={() => this.handleAddToCart(item.id,item.id_item, item.title, item.sculptor, item.price, item.source)} >Add To Cart</Button>{' '}
+									</div>
+					}
 					<div className='d-flex justify-content-around mb-1' style={{ marginTop: "10px" }}>
 						<Button variant="danger" style={{ width: "120px" }} onClick={() => this.handleDelete(item.id)}>Delete </Button>{' '}
 					</div>
