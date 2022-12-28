@@ -3,13 +3,14 @@ import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import { HISTORY_URL,CART_URL } from '../../const';
+import { HISTORY_URL, CART_URL } from '../../const';
 import './ShopingCart.css'
 import { useStore } from '../../context/UserContext';
 
 export default function TotalPrice({ items, view, proceedBtn, id }) {
     const navigate = useNavigate();
-    const {dispatch} = useStore()
+    const { dispatch } = useStore();
+
     const detailBarang = items.map(item => ({
         nama: item.title,
         jumlah: item.jumlah_barang,
@@ -47,7 +48,7 @@ export default function TotalPrice({ items, view, proceedBtn, id }) {
                     detail: detailBarang,
                     status: 1
                 };
-                console.log(id)
+
                 axios
                     .post(HISTORY_URL, history)
                     .then(async () => {
@@ -59,7 +60,7 @@ export default function TotalPrice({ items, view, proceedBtn, id }) {
                             button: false,
                             timer: 1500,
                         });
-                        dispatch({type:"setCart", payload:0})
+                        dispatch({ type: "setCart", payload: 0 })
                         navigate('/history');
                     })
                     .catch(error => console.log(error));
