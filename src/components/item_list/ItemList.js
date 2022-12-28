@@ -7,6 +7,7 @@ import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
 import Banner from './Banner';
+import Header from '../Header';
 
 export default class ItemList extends Component {
 	static contextType = Store
@@ -192,7 +193,13 @@ export default class ItemList extends Component {
 	}
 
 	render() {
-		let itemList = this.state.items.map(
+		let items = [...this.state.items]
+		console.log(items)
+		if(this.context.state.find !=""){
+			items= items.filter(item=>item.title.toLowerCase().includes(this.context.state.find.toLocaleLowerCase()))
+			console.log(items)
+		}
+		let itemList = items.map(
 			item => (
 				<Col key={item.id} sm={6} md={4} lg={3}>
 					<Card className='figure-item mb-3 shadow'>

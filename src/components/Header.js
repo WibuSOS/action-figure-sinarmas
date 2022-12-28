@@ -6,6 +6,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import axios from 'axios'
 import { useStore } from '../context/UserContext';
 import { Button } from 'react-bootstrap';
+import ItemList from './item_list/ItemList';
 
 
 export default function Header() {
@@ -14,6 +15,11 @@ export default function Header() {
     // const [jumlahCart, setJumlahCart] = useState(0)
     // const [jumlahHistory, setJumlahHistory] = useState(0)
     // const [jumlahBookmark, setJumlahBookmark] = useState(0)
+
+    let [product, setProdut] = useState('')
+    const FindProduct = (input)=>{
+        dispatch({type:"search", payload:input})
+    }
 
     useEffect(() => {
         // if(state.user != null) loadData()
@@ -67,7 +73,7 @@ export default function Header() {
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
                         <div style={{ width: "40%", backgroundColor: "white", alignItems: "center", position: "relative", }} className="rounded d-flex ms-4 px-2 py-1">
                             <img src={ICONS + "search-interface-symbol.png"} alt="search logo" style={{ position: "absolute", width: "25px", height: "25px", }} />
-                            <input className="w-100 remove-border" style={{ padding: "0 0 0 43px", borderTopStyle: "hidden", borderRightStyle: "hidden", borderStyle: "hidden" }} type="search" placeholder="Search" aria-label="Search" />
+                            <input onChange={(e) => FindProduct(e.target.value)} className="w-100 remove-border" style={{ padding: "0 0 0 43px", borderTopStyle: "hidden", borderRightStyle: "hidden", borderStyle: "hidden" }} type="search" placeholder="Search" aria-label="Search" />
                         </div>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
                             <li className="nav-item">
