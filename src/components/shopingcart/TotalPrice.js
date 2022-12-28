@@ -89,8 +89,8 @@ export default function TotalPrice({ items, view, proceedBtn, id }) {
                     <Col className="col-6">{`Rp${finalPrice.toLocaleString('id')}`}</Col>
                 </Row>
                 <Row className='text-center mx-2 pt-5'>
-                    {view === 'cart' && <Link to='/checkout' className='btn btn-warning'>{proceedBtn}</Link>}
-                    {view === 'checkout' && <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning'>{proceedBtn}</Link>}
+                    {view === 'cart' && <Link to='/checkout' className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
+                    {view === 'checkout' && <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
                 </Row>
             </Card.Body>
         </Card >

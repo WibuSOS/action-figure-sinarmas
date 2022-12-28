@@ -11,21 +11,21 @@ function Banner() {
                 alt="First slide"
             />
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item interval={1000}>
             <img
             className="d-block w-100"
                 src={ASSETS_DIR +"/Banner2.jpg.webp"}
                 alt="Second slide"
             />
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item interval={1000}>
             <img
             className="d-block w-100"
                 src={ASSETS_DIR +"/Banner3.jpg.webp"}
                 alt="Third slide"
             />
         </Carousel.Item>
-        <Carousel.Item interval={500}>
+        <Carousel.Item interval={1000}>
             <img
             className="d-block w-100"
                 src={ASSETS_DIR +"/Banner4.jpg.webp"}
