@@ -19,6 +19,7 @@ export default class Bookmark extends Component {
 		axios
 			.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
 			.then(res => {
+				console.log(res.data)
 				let items = res.data;
 				this.setState({ items });
 			})
@@ -26,22 +27,22 @@ export default class Bookmark extends Component {
 		this.loadData()
 	}
 	async loadData() {
-		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
-		try {
-			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-			this.setState({ cart: res.data });
-			jumlahCart = res.data.length
-		} catch (err) { }
-		try {
-			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
-			jumlahHistory = res.data.length
-		} catch (err) { }
-		try {
-			const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
-			jumlahBookmark = res.data.length
-			this.setState({ bookmarks: res.data });
-		} catch (err) { }
-		this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
+		// let jumlahCart, jumlahHistory, jumlahBookmark = 0;
+		// try {
+		// 	const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
+		// 	this.setState({ cart: res.data });
+		// 	jumlahCart = res.data.length
+		// } catch (err) { }
+		// try {
+		// 	const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
+		// 	jumlahHistory = res.data.length
+		// } catch (err) { }
+		// try {
+		// 	const res = await axios.get(API_URL + "/bookmark?id_person=" + localStorage.getItem("id"))
+		// 	jumlahBookmark = res.data.length
+		// 	this.setState({ bookmarks: res.data });
+		// } catch (err) { }
+		// this.context.dispatch({ type: "setDefault", payload: { bookmark: jumlahBookmark, history: jumlahHistory, cart: jumlahCart } })
 	}
 	handleDelete = async (itemId) => {
 		axios
@@ -108,10 +109,6 @@ export default class Bookmark extends Component {
 					})
 					this.getResource()
 				}
-				
-				
-				
-				
 			}
 			
 		}catch(err){
@@ -123,32 +120,6 @@ export default class Bookmark extends Component {
 				timer: 1500,
 			})
 		}
-		// axios
-		// 	.get(`${CART_URL}?_sort=id&_order=desc`)
-		// 	.then(() => {
-		// 		const cart = {
-		// 			id_item: id_item,
-		// 			id_person: localStorage.getItem("id"),
-		// 			title: title,
-		// 			sculptor: sculptor,
-		// 			price: price,
-		// 			jumlah_barang: 1,
-		// 			source: source
-		// 		};
-		// 		axios
-		// 			.post(CART_URL, cart)
-		// 			.then(() => {
-		// 				swal({
-		// 					title: "Sukses Masuk Keranjang",
-		// 					text: "Sukses Masuk Keranjang ",
-		// 					icon: "success",
-		// 					button: false,
-		// 					timer: 1500,
-		// 				}).then(() => this.getResource());;
-		// 			})
-		// 			.catch(error => console.log(error));
-		// 	})
-		// 	.catch(error => console.log(error));
 	}
 
 	render() {
@@ -175,7 +146,10 @@ export default class Bookmark extends Component {
 						<div style={{ borderTop: "2px solid black", marginBottom: "20px" }}>
 						</div>
 						<Row>
-							{itemList}
+							{this.state.items == 0?<>
+								<div className="text-center">Bookmark kosong</div>
+							</>:
+							itemList}
 						</Row>
 					</Container>
 				</div>

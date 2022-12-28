@@ -3,9 +3,14 @@ import { IMAGES_CATALOG, API_URL, RUPIAH } from './../const'
 import './../styles/custom.css'
 import './../styles/Transaction.css'
 import axios from 'axios'
+import { useStore } from '../context/UserContext' 
 export default function Transaction() {
     const [tab, setTab] = useState(1)
     const [data, setData] = useState([])
+    const {state, dispatch} = useStore()
+    useEffect(()=>{
+        loadData()
+    },[])
     useEffect(() => {
         const getData = async () => {
             try {
@@ -32,7 +37,12 @@ export default function Transaction() {
         getData()
     }, [tab])
 
-
+    const loadData= async()=>{
+        let find = "id_person="+localStorage.getItem("id") 
+		const res = await axios.get(API_URL + "/history?" + find)
+        dispatch({type:"setHistory", payload:res.data.length})
+        console.log(res)
+	}
     const status = (data) => {
         if (data === 1) {
             return "Await Payment"
