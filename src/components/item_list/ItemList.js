@@ -34,8 +34,11 @@ export default class ItemList extends Component {
 		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
 		try {
 			const res = await axios.get(API_URL + "/cart?id_person=" + localStorage.getItem("id"))
-			this.setState({ cart: res.data });
-			jumlahCart = res.data.length
+			if(res.data.length!==0){
+				this.setState({ cart: res.data[0].details });
+				jumlahCart = res.data[0].details.length
+			}
+			
 		} catch (err) { }
 		try {
 			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
@@ -54,7 +57,7 @@ export default class ItemList extends Component {
 			.get(API_URL + "/bookmark?_sort=id&_order=desc")
 			.then(res => {
 				let id_bookmark = 0
-				if (res.data.length == 0) {
+				if (res.data.length === 0) {
 					id_bookmark = 1
 					console.log(id_bookmark)
 				}
@@ -90,44 +93,96 @@ export default class ItemList extends Component {
 			.catch(error => console.log(error));
 	}
 
-	addToCart({ id, title, sculptor, price, source }) {
-		axios
-			.get(`${CART_URL}?_sort=id&_order=desc`)
-			.then(res => {
-				let id_cart
-				if (res.data.length === 0) {
-					id_cart = 1
-				}
-				else {
-					id_cart = res.data[0].id + 1;
-				}
-
+	async addToCart({ id, title, sculptor, price, source }) {
+		try{
+			const resGet = await axios.get(`${CART_URL}?id_person=${localStorage.getItem("id")}`)
+			if(resGet.data.length === 0){
 				const cart = {
-					id: id_cart,
+					id_person:localStorage.getItem("id"),
+					details:[
+						{
+							id_person:localStorage.getItem("id"),
+							id_item: id,
+							title:title,
+							sculptor: sculptor,
+							price: price,
+							jumlah_barang: 1,
+							source: source
+						}
+					],
+					
+				};
+				const res = await axios.post(`${CART_URL}`, cart)
+			}else{
+				const data = resGet.data[0]
+				const cart = {
+					id_person:localStorage.getItem("id"),
 					id_item: id,
-					id_person: localStorage.getItem("id"),
-					title: title,
+					title:title,
 					sculptor: sculptor,
 					price: price,
 					jumlah_barang: 1,
 					source: source
-				};
-
-				axios
-					.post(CART_URL, cart)
-					.then(() => {
-						swal({
-							title: "Sukses Add to Cart",
-							text: "Sukses Add to Cart",
-							icon: "success",
-							button: false,
-							timer: 1500,
-						})
-							.then(() => this.getResource());
-					})
-					.catch(error => console.log(error));
+				}
+				data.details.push(cart)//up
+				const res = await axios.put(`${CART_URL}/${data.id}`, data)
+				
+			}
+			await swal({
+				title: "Sukses Add to Cart",
+				text: "Sukses Add to Cart",
+				icon: "success",
+				button: false,
+				timer: 1500,
 			})
-			.catch(error => console.log(error));
+			this.getResource()
+		}catch(err){
+			await swal({
+				title: "Gagal Add to Cart",
+				text: "Galal Add to Cart",
+				icon: "error",
+				button: false,
+				timer: 1500,
+			})
+		}
+		
+		// axios
+		// 	.get(`${CART_URL}?_sort=id&_order=desc`)
+		// 	.then(res => {
+		// 		let id_cart
+		// 		if (res.data.length === 0) {
+		// 			id_cart = 1
+		// 		}
+		// 		else {
+		// 			id_cart = res.data[0].id + 1;
+		// 		}
+
+		// 		const cart = {
+		// 			id: id_cart,
+		// 			id_item: id,
+		// 			id_person: localStorage.getItem("id"),
+		// 			title: title,
+		// 			sculptor: sculptor,
+		// 			price: price,
+		// 			jumlah_barang: 1,
+		// 			source: source
+		// 		};
+
+		// 		axios
+		// 			.post(CART_URL, cart)
+		// 			.then(() => {
+		// 				swal({
+		// 					title: "Sukses Add to Cart",
+		// 					text: "Sukses Add to Cart",
+		// 					icon: "success",
+		// 					button: false,
+		// 					timer: 1500,
+		// 				})
+		// 					.then(() => this.getResource());
+		// 			})
+		// 			.catch(error => console.log(error));
+		// 	})
+		// 	.catch(error => console.log(error));
 	}
 
 	logout() {

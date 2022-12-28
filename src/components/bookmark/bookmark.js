@@ -58,32 +58,97 @@ export default class Bookmark extends Component {
 			.catch(error => console.log(error));
 	}
 	handleAddToCart = async (id_item, title, sculptor, price, source) => {
-		axios
-			.get(`${CART_URL}?_sort=id&_order=desc`)
-			.then(() => {
+		try{
+			const resGet = await axios.get(`${CART_URL}?id_person=${localStorage.getItem("id")}`)
+			if(resGet.data.length === 0){
 				const cart = {
-					id_item: id_item,
-					id_person: localStorage.getItem("id"),
-					title: title,
-					sculptor: sculptor,
-					price: price,
-					jumlah_barang: 1,
-					source: source
+					id_person:localStorage.getItem("id"),
+					details:[
+						{
+							id_person:localStorage.getItem("id"),
+							id_item: id_item,
+							title:title,
+							sculptor: sculptor,
+							price: price,
+							jumlah_barang: 1,
+							source: source
+						}
+					],
+					
 				};
-				axios
-					.post(CART_URL, cart)
-					.then(() => {
-						swal({
-							title: "Sukses Masuk Keranjang",
-							text: "Sukses Masuk Keranjang ",
-							icon: "success",
-							button: false,
-							timer: 1500,
-						}).then(() => this.getResource());;
+				const res = await axios.post(`${CART_URL}`, cart)
+				await swal({
+					title: "Sukses Add to Cart",
+					text: "Sukses Add to Cart",
+					icon: "success",
+					button: false,
+					timer: 1500,
+				})
+				this.getResource()
+			}else{
+				const data = resGet.data[0]
+				if(data.details.findIndex(item=>item.id_item==id_item)){
+					const cart = {
+						id_person:localStorage.getItem("id"),
+						id_item: id_item,
+						title:title,
+						sculptor: sculptor,
+						price: price,
+						jumlah_barang: 1,
+						source: source
+					}
+					data.details.push(cart)
+					const res = await axios.put(`${CART_URL}/${data.id}`, data)
+					await swal({
+						title: "Sukses Add to Cart",
+						text: "Sukses Add to Cart",
+						icon: "success",
+						button: false,
+						timer: 1500,
 					})
-					.catch(error => console.log(error));
+					this.getResource()
+				}
+				
+				
+				
+				
+			}
+			
+		}catch(err){
+			await swal({
+				title: "Gagal Add to Cart",
+				text: "Galal Add to Cart",
+				icon: "error",
+				button: false,
+				timer: 1500,
 			})
-			.catch(error => console.log(error));
+		}
+		// axios
+		// 	.get(`${CART_URL}?_sort=id&_order=desc`)
+		// 	.then(() => {
+		// 		const cart = {
+		// 			id_item: id_item,
+		// 			id_person: localStorage.getItem("id"),
+		// 			title: title,
+		// 			sculptor: sculptor,
+		// 			price: price,
+		// 			jumlah_barang: 1,
+		// 			source: source
+		// 		};
+		// 		axios
+		// 			.post(CART_URL, cart)
+		// 			.then(() => {
+		// 				swal({
+		// 					title: "Sukses Masuk Keranjang",
+		// 					text: "Sukses Masuk Keranjang ",
+		// 					icon: "success",
+		// 					button: false,
+		// 					timer: 1500,
+		// 				}).then(() => this.getResource());;
+		// 			})
+		// 			.catch(error => console.log(error));
+		// 	})
+		// 	.catch(error => console.log(error));
 	}
 
 	render() {
