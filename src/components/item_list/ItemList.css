@@ -10,3 +10,11 @@
 .figure-title {
 	min-height: 5rem;
 }
+
+.shadow {
+    box-shadow: 0px 25px 40px #00000033;
+}
+
+.shadow-button:hover {
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.19);
+}

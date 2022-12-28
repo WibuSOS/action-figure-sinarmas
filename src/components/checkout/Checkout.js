@@ -6,11 +6,13 @@ import './Checkout.css'
 import DeliveryDetails from './DeliveryDetails'
 import CartList from '../shopingcart/CartList'
 import TotalPrice from '../shopingcart/TotalPrice'
+import { Store } from '../../context/UserContext'
 
 export default class Checkout extends Component {
+	static contextType = Store
 	constructor(props) {
 		super(props);
-		this.state = { profile: {}, cart: [], view: 'checkout', proceedBtn: 'Proceed' };
+		this.state = { profile: {}, cart: [], view: 'checkout', proceedBtn: 'Proceed', id: null };
 	}
 
 	componentDidMount() {
@@ -25,9 +27,12 @@ export default class Checkout extends Component {
 		axios
 			.get(`${CART_URL}?id_person=${localStorage.getItem('id')}`)
 			.then(res => {
-				let cart = res.data;
-				if (!cart || (cart && cart.length <= 0)) { window.location.href = '/' }
-				this.setState({ cart });
+				if (res.data.length !== 0) {
+					let cart = res.data[0].details;
+					this.setState({ cart, id: res.data[0].id });
+				} else {
+					window.location.href = '/'
+				}
 			})
 			.catch(error => console.log(error));
 	}
@@ -54,7 +59,7 @@ export default class Checkout extends Component {
 					{
 						this.state.cart.length > 0 &&
 						<Col lg={4} className='mt-3 mt-lg-0'>
-							<TotalPrice items={this.state.cart} view={this.state.view} proceedBtn={this.state.proceedBtn} />
+							<TotalPrice items={this.state.cart} view={this.state.view} proceedBtn={this.state.proceedBtn} id={this.state.id} />
 						</Col>
 					}
 				</Row>

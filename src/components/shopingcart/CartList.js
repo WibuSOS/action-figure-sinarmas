@@ -36,10 +36,9 @@ export default function CartList({ items, view, change }) {
         // });
         // }
     }
-
     let itemList = items.map(
-        item => (
-            <Row key={item.id} className='mb-4'>
+        (item, index) => (
+            <Row key={index} className='mb-4'>
                 <Col className="col-sm-3">
                     <img className='underline img-cart' variant='top' src={`${FIGURES_DIR}/${item.source}`} alt={item.title} />
                 </Col>
@@ -51,14 +50,14 @@ export default function CartList({ items, view, change }) {
                     <p className='underline'>Quantity</p>
                     <Col>
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'trash.png'} onClick={() => deleteCart(item.id)}></img>
+                            <img src={ICONS + 'trash.png'} onClick={() => deleteCart(item.id_item)}></img>
                         </Button>
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'minus.png'} onClick={() => kurang(item.id)}></img>
+                            <img src={ICONS + 'minus.png'} onClick={() => kurang(item.id_item)}></img>
                         </Button>
                         {item.jumlah_barang}
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'plus.png'} onClick={() => tambah(item.id)}></img>
+                            <img src={ICONS + 'plus.png'} onClick={() => tambah(item.id_item)}></img>
                         </Button>
                     </Col>
                 </Col>}

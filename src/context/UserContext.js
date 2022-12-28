@@ -24,6 +24,9 @@ function AccountReducer(state, action) {
     case 'setDefault': {
       return { ...state, ...action.payload }
     }
+    case 'search':{
+      return {...state, find:action.payload}
+    }
     default: {
       console.log("not found" + action.type)
       // throw new Error(`Unhandled action type: ${action.type}`)
@@ -31,9 +34,9 @@ function AccountReducer(state, action) {
   }
 }
 export default function UserContext({ children }) {
-  const [state, dispatch] = useReducer(AccountReducer, { user: null, history: 0, bookmark: 0, cart: 0 }, () => {
+  const [state, dispatch] = useReducer(AccountReducer, { user: null, history: 0, bookmark: 0, cart: 0, find:"" }, () => {
     const name = localStorage.getItem("name")
-    return { user: (name !== undefined && name != null ? name : null), history: 0, bookmark: 0, cart: 0 }
+    return { user: (name !== undefined && name != null ? name : null), history: 0, bookmark: 0, cart: 0, find:"" }
   })
   const value = { state, dispatch }
   return <Store.Provider value={value}>{children}</Store.Provider>

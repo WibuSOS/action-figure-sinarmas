@@ -3,11 +3,13 @@ import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom';
 import swal from 'sweetalert';
-import { HISTORY_URL } from '../../const';
+import { HISTORY_URL, CART_URL } from '../../const';
 import './ShopingCart.css'
+import { useStore } from '../../context/UserContext';
 
-export default function TotalPrice({ items, view, proceedBtn }) {
+export default function TotalPrice({ items, view, proceedBtn, id }) {
     const navigate = useNavigate();
+    const { dispatch } = useStore();
 
     const detailBarang = items.map(item => ({
         nama: item.title,
@@ -22,7 +24,7 @@ export default function TotalPrice({ items, view, proceedBtn }) {
     const VAT = 0.1;
     const finalPrice = totalPrice + courierFee + (VAT * totalPrice);
 
-    const handleCheckout = (e) => {
+    const handleCheckout = async (e) => {
         e.preventDefault();
         axios
             .get(`${HISTORY_URL}?_sort=id&_order=desc`)
@@ -50,6 +52,7 @@ export default function TotalPrice({ items, view, proceedBtn }) {
                 axios
                     .post(HISTORY_URL, history)
                     .then(async () => {
+                        await axios.delete(`${CART_URL}/${id}`)
                         await swal({
                             title: "Barang Telah Dipesan",
                             text: "Melanjutkan ke halaman history",
@@ -57,6 +60,7 @@ export default function TotalPrice({ items, view, proceedBtn }) {
                             button: false,
                             timer: 1500,
                         });
+                        dispatch({ type: "setCart", payload: 0 })
                         navigate('/history');
                     })
                     .catch(error => console.log(error));
@@ -85,8 +89,8 @@ export default function TotalPrice({ items, view, proceedBtn }) {
                     <Col className="col-6">{`Rp${finalPrice.toLocaleString('id')}`}</Col>
                 </Row>
                 <Row className='text-center mx-2 pt-5'>
-                    {view === 'cart' && <Link to='/checkout' className='btn btn-warning'>{proceedBtn}</Link>}
-                    {view === 'checkout' && <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning'>{proceedBtn}</Link>}
+                    {view === 'cart' && <Link to='/checkout' className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
+                    {view === 'checkout' && <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
                 </Row>
             </Card.Body>
         </Card >
