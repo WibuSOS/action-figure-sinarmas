@@ -7,7 +7,7 @@
       "price": 2650000,
       "quantity": 100,
       "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg",
-      "date": "2022-12-28"
+      "date": "2021-09-27"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "price": 650000,
       "quantity": 100,
       "source": "nendoroid-yor-forger-spy-x-family.jpg",
-      "date": "2022-12-27"
+      "date": "2021-09-28"
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "price": 800000,
       "quantity": 100,
       "source": "nendoroid-yuji-itadori-second-preorder-period.jpg",
-      "date": "2022-11-28"
+      "date": "2022-11-27"
     },
     {
       "id": 4,
@@ -34,7 +34,7 @@
       "price": 580000,
       "quantity": 100,
       "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg",
-      "date": "2022-11-27"
+      "date": "2022-11-28"
     },
     {
       "id": 5,
@@ -43,7 +43,7 @@
       "price": 720000,
       "quantiy": 100,
       "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg",
-      "date": "2021-12-28"
+      "date": "2022-12-27"
     },
     {
       "id": 6,
@@ -52,7 +52,7 @@
       "price": 720000,
       "quantity": 100,
       "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg",
-      "date": "2021-12-27"
+      "date": "2022-12-28"
     }
   ],
   "bookmark": [
@@ -123,6 +123,15 @@
           "price": 580000,
           "jumlah_barang": 1,
           "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
+        },
+        {
+          "id_person": "2",
+          "id_item": 3,
+          "title": "Nendoroid Yuji Itadori",
+          "sculptor": "Good Smile Company",
+          "price": 800000,
+          "jumlah_barang": 1,
+          "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
         }
       ],
       "id": 2

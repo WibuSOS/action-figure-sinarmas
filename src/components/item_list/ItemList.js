@@ -7,13 +7,12 @@ import { ItemTab } from '../item_tab/ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
 import Banner from './Banner';
-import Header from '../Header';
 
 export default class ItemList extends Component {
 	static contextType = Store
 	constructor(props) {
 		super(props);
-		this.state = { items: [], cart: [], bookmarks: [] };
+		this.state = { items: [], items_date: [], cart: [], bookmarks: [] };
 	}
 
 	componentDidMount() {
@@ -28,7 +27,16 @@ export default class ItemList extends Component {
 				this.setState({ items });
 			})
 			.catch(error => console.log(error));
-		this.loadData()
+
+		axios
+			.get(`${FIGURES_URL}?_sort=date&_order=desc&_limit=4`)
+			.then(res => {
+				let items_date = res.data;
+				this.setState({ items_date });
+			})
+			.catch(error => console.log(error));
+
+		this.loadData();
 	}
 
 	async loadData() {
@@ -112,7 +120,7 @@ export default class ItemList extends Component {
 						}
 					],
 				};
-				const res = await axios.post(`${CART_URL}`, cart)
+				await axios.post(`${CART_URL}`, cart)
 			} else {
 				const data = resGet.data[0]
 				const cart = {
@@ -125,7 +133,7 @@ export default class ItemList extends Component {
 					source: source
 				}
 				data.details.push(cart)//up
-				const res = await axios.put(`${CART_URL}/${data.id}`, data)
+				await axios.put(`${CART_URL}/${data.id}`, data)
 			}
 			await swal({
 				title: "Sukses Add to Cart",
@@ -152,37 +160,48 @@ export default class ItemList extends Component {
 		window.location.href = "/";
 	}
 
+	dataToViewMapping(items) {
+		return (
+			items.map(
+				item => (
+					<Col key={item.id} sm={6} md={4} lg={3}>
+						<Card className='figure-item mb-3 shadow'>
+							<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} alt={item.title} />
+							<Card.Body>
+								<Card.Title className='figure-title'>{item.title}</Card.Title>
+								<Card.Subtitle className='mb-2 text-muted'>{`Rp${item.price.toLocaleString('id')}`}</Card.Subtitle>
+								<Card.Text>
+									{`By ${item.sculptor}`}
+								</Card.Text>
+								{
+									this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
+										<Button variant='dark shadow-button' disabled>In cart</Button> :
+										<Button variant='warning shadow-button' onClick={() => this.addToCart(item)}>Add to cart</Button>
+								}
+								<Button className='shadow-button' onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
+									<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
+								</Button>
+							</Card.Body>
+						</Card>
+					</Col>
+				)
+			)
+		)
+	}
+
 	render() {
 		let items = [...this.state.items]
-		console.log(items)
-		if(this.context.state.find !=""){
-			items= items.filter(item=>item.title.toLowerCase().includes(this.context.state.find.toLocaleLowerCase()))
+		let itemsAll = [...this.state.items]
+		let itemsNewest = [...this.state.items_date]
+
+		if (this.context.state.find != "") {
+			items = items.filter(item => item.title.toLowerCase().includes(this.context.state.find.toLocaleLowerCase()))
 			console.log(items)
 		}
-		let itemList = items.map(
-			item => (
-				<Col key={item.id} sm={6} md={4} lg={3}>
-					<Card className='figure-item mb-3 shadow'>
-						<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} alt={item.title} />
-						<Card.Body>
-							<Card.Title className='figure-title'>{item.title}</Card.Title>
-							<Card.Subtitle className='mb-2 text-muted'>{`Rp${item.price.toLocaleString('id')}`}</Card.Subtitle>
-							<Card.Text >
-								{`By ${item.sculptor}`}
-							</Card.Text>
-							{
-								this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
-									<Button variant='dark shadow-button' disabled>In cart</Button> :
-									<Button variant='warning shadow-button' onClick={() => this.addToCart(item)}>Add to cart</Button>
-							}
-							<Button className='shadow-button' onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
-								<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
-							</Button>
-						</Card.Body>
-					</Card>
-				</Col>
-			)
-		);
+
+		let itemList = this.dataToViewMapping(items);
+		let itemListAll = this.dataToViewMapping(itemsAll);
+		let itemListNewest = this.dataToViewMapping(itemsNewest);
 
 		return (
 			<Container className='figure-list mt-3'>
@@ -192,7 +211,7 @@ export default class ItemList extends Component {
 				<Row className='pt-5'>
 					{itemList}
 				</Row>
-				<ItemTab itemList={itemList} />
+				<ItemTab itemListAll={itemListAll} itemListNewest={itemListNewest} />
 			</Container>
 		)
 	}
