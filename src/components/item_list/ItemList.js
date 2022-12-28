@@ -110,7 +110,6 @@ export default class ItemList extends Component {
 							source: source
 						}
 					],
-
 				};
 				const res = await axios.post(`${CART_URL}`, cart)
 			} else {
@@ -126,7 +125,6 @@ export default class ItemList extends Component {
 				}
 				data.details.push(cart)//up
 				const res = await axios.put(`${CART_URL}/${data.id}`, data)
-
 			}
 			await swal({
 				title: "Sukses Add to Cart",
@@ -135,7 +133,7 @@ export default class ItemList extends Component {
 				button: false,
 				timer: 1500,
 			})
-			this.getResource()
+			this.getResource();
 		} catch (err) {
 			await swal({
 				title: "Gagal Add to Cart",
@@ -145,44 +143,6 @@ export default class ItemList extends Component {
 				timer: 1500,
 			})
 		}
-
-		// axios
-		// 	.get(`${CART_URL}?_sort=id&_order=desc`)
-		// 	.then(res => {
-		// 		let id_cart
-		// 		if (res.data.length === 0) {
-		// 			id_cart = 1
-		// 		}
-		// 		else {
-		// 			id_cart = res.data[0].id + 1;
-		// 		}
-
-		// 		const cart = {
-		// 			id: id_cart,
-		// 			id_item: id,
-		// 			id_person: localStorage.getItem("id"),
-		// 			title: title,
-		// 			sculptor: sculptor,
-		// 			price: price,
-		// 			jumlah_barang: 1,
-		// 			source: source
-		// 		};
-
-		// 		axios
-		// 			.post(CART_URL, cart)
-		// 			.then(() => {
-		// 				swal({
-		// 					title: "Sukses Add to Cart",
-		// 					text: "Sukses Add to Cart",
-		// 					icon: "success",
-		// 					button: false,
-		// 					timer: 1500,
-		// 				})
-		// 					.then(() => this.getResource());
-		// 			})
-		// 			.catch(error => console.log(error));
-		// 	})
-		// 	.catch(error => console.log(error));
 	}
 
 	logout() {
