@@ -100,7 +100,7 @@ export default function Transaction() {
                     </div> :
                         data.map(d => {
                             return (
-                                <div className='rounded p-4 my-2 border'>
+                                <div className='rounded p-4 my-2 mb-3 border shadow'>
                                     <div className='row mb-4'>
                                         <div className='col-md-3 col-sm-6 text-center'>
                                             Paycode : {d.paycode}

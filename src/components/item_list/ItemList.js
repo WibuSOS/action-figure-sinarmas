@@ -140,7 +140,7 @@ export default class ItemList extends Component {
 		let itemList = this.state.items.map(
 			item => (
 				<Col key={item.id} sm={6} md={4} lg={3}>
-					<Card className='figure-item mb-3'>
+					<Card className='figure-item mb-3 shadow'>
 						<Card.Img variant='top' src={`${FIGURES_DIR}/${item.source}`} alt={item.title} />
 						<Card.Body>
 							<Card.Title className='figure-title'>{item.title}</Card.Title>
@@ -150,10 +150,10 @@ export default class ItemList extends Component {
 							</Card.Text>
 							{
 								this.state.cart.map(cart_item => cart_item.id_item).includes(item.id) ?
-									<Button variant='dark' disabled>In cart</Button> :
-									<Button variant='warning' onClick={() => this.addToCart(item)}>Add to cart</Button>
+									<Button variant='dark shadow-button' disabled>In cart</Button> :
+									<Button variant='warning shadow-button' onClick={() => this.addToCart(item)}>Add to cart</Button>
 							}
-							<Button onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
+							<Button className='shadow-button' onClick={() => this.saveItem(item)} style={{ marginLeft: "54px" }} variant={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? "dark" : "warning"} disabled={this.state.bookmarks.map(bookmark => bookmark.id_item).includes(item.id) ? true : false} >
 								<img src={ICONS + "bookmark-free-icon-font.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} />
 							</Button>
 						</Card.Body>
@@ -164,11 +164,11 @@ export default class ItemList extends Component {
 
 		return (
 			<Container className='figure-list mt-3'>
-				<Row className='pb-3 pt-3'>
+				<Row className='pb-3 pt-3 shadow'>
 					<Banner />
 				</Row>
-				<Container fluid>
-					<Row>
+				<Container fluid className='pb-5 pt-5'>
+					<Row >
 						{itemList}
 					</Row>
 				</Container>

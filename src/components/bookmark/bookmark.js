@@ -104,7 +104,7 @@ export default class Bookmark extends Component {
 
 		return (
 			<div className='container mt-4'>
-				<div className='card p-4'>
+				<div className='card p-4 shadow'>
 					<Container className='figure-list mt-3'>
 						<h2>Bookmark</h2>
 						<div style={{ borderTop: "2px solid black", marginBottom: "20px" }}>
