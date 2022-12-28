@@ -102,6 +102,7 @@ export default class ShopingCart extends Component {
                     dataUser["details"] = items
                     if (await this.updateData(dataUser) === 1) {
                         this.setState({ data:dataUser })
+                        this.loadData()
                     }
                 }else{
                     const dataUser = {...this.state.data}
@@ -112,7 +113,7 @@ export default class ShopingCart extends Component {
                         this.loadData()
                     }
                 }
-                
+               
                 // this.deleteData(items[index])
                 // this.getResource();
             }
