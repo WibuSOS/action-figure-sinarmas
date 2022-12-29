@@ -15,10 +15,12 @@ import axios from 'axios'
 import { API_URL } from './const';
 function MultiRouter() {
   const { state,dispatch } = useStore()
+  
   useEffect(()=>{
     
     loadData()
   },[])
+
   const loadData= async()=>{
 		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
 		try {

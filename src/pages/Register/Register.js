@@ -12,6 +12,7 @@ export default class Register extends Component {
             username : "",
             email    : "",
             password : "",
+            password2 : "",
             address : "",
             role : "",
             login : false
@@ -29,6 +30,10 @@ export default class Register extends Component {
         const { value } = e.target;
         this.setState({ password : value});
     };
+    handlePassword2 = e =>{
+        const { value } = e.target;
+        this.setState({ password2 : value});
+    }
     handleAddress = e => {
         const { value } = e.target;
         this.setState({ address : value});
@@ -41,39 +46,60 @@ export default class Register extends Component {
             password:this.state.password,
             address:this.state.address,
             source:"profile1.png"
+        }
+        if(this.state.username === "" || this.state.email === "" || this.state.password === ""||this.state.address=== "")
+        {   
+            swal({
+                    title: "Error",
+                    text: "Isi Field Yang Mandatory",
+                    icon: "error"
+            })
         }  
-        axios
-            .get(API_URL+"/profiles?name="+ this.state.username)
-            .then(res=> {
-            console.log(res.data);
-            if(res.data.length === 0)
-            {
-                axios
-                    .post(API_URL+"/profiles" ,profile )
-                    .then(res => {
-                        swal({
-                            title: "Register",
-                            text: "Register Sukses",
-                            icon: "success",
-                            button : false, 
-                            timer : 1500,
-                        }).then(()=>{
-                            window.location.href="/"
-                        });
-                    })
-                    .catch(error => console.log(error));
-            }
-            else
+        else
+        {
+            if(this.state.password !== this.state.password2 )
             {
                 swal({
-                    title: "Register",
-                    text: "Username telah terdaftar",
+                    title: "Error",
+                    text: "Password dan Confirm Password tidak sama",
                     icon: "error"
                 })
             }
-            }).catch(error=>console.log(error));
-
+            else
+            {
+                axios
+                    .get(API_URL+"/profiles?name="+ this.state.username)
+                    .then(res=> {
+                    console.log(res.data);
+                    if(res.data.length === 0)
+                    {
+                        axios
+                            .post(API_URL+"/profiles" ,profile )
+                            .then(res => {
+                                swal({
+                                    title: "Register",
+                                    text: "Register Sukses",
+                                    icon: "success",
+                                    button : false, 
+                                    timer : 1500,
+                                }).then(()=>{
+                                    window.location.href="/"
+                                });
+                            })
+                            .catch(error => console.log(error));
+                    }
+                    else
+                    {
+                        swal({
+                            title: "Register",
+                            text: "Username telah terdaftar",
+                            icon: "error"
+                        })
+                    }
+                    }).catch(error=>console.log(error));
+            }
         
+        }
     }       
     render() {
                 return (
@@ -113,8 +139,8 @@ export default class Register extends Component {
                                                 type ="password"
                                                 />
                                             </InputGroup>
-                                            <InputGroup className="btn-shadow mb-1">
-                                                <InputGroup.Text className='btn-input' id="basic-addon1"><img src={ICONS + "lock.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
+                                            <InputGroup className="btn-shadow mb-1" onChange={this.handlePassword2}>
+                                                <InputGroup.Text className='btn-input' id="basic-addon1" ><img src={ICONS + "lock.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
                                                 <Form.Control
                                                 className='btn-input'
                                                 placeholder="Confirm Password"

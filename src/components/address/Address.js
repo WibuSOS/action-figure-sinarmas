@@ -20,12 +20,6 @@ export default class Address extends Component {
             })
             .catch(error => console.log(error));
     }
-    changeData = async (id, type) => {
-        const { items } = this.state
-        const index = items.findIndex(item => item.id === id)
-        // const found = items.some(item=>item.id==id)
-    }
-
     render() {
         return (
             <Container className='mt-3'>

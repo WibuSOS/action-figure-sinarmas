@@ -50,14 +50,14 @@ export default function CartList({ items, view, change }) {
                     <p className='underline'>Quantity</p>
                     <Col>
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'trash.png'} onClick={() => deleteCart(item.id_item)}></img>
+                            <img src={ICONS + 'trash.png'} onClick={() => deleteCart(item.id_item)} alt ="delete"></img>
                         </Button>
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'minus.png'} onClick={() => kurang(item.id_item)}></img>
+                            <img src={ICONS + 'minus.png'} onClick={() => kurang(item.id_item)} alt ="kurang"></img>
                         </Button>
                         {item.jumlah_barang}
                         <Button className='cart-btn'>
-                            <img src={ICONS + 'plus.png'} onClick={() => tambah(item.id_item)}></img>
+                            <img src={ICONS + 'plus.png'} onClick={() => tambah(item.id_item)} alt="tambah"></img>
                         </Button>
                     </Col>
                 </Col>}

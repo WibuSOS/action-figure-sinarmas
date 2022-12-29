@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { Button,Image,Col,Row,Container,Card,Form, InputGroup } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import axios from 'axios'
 import { API_URL, ICONS } from '../const'
 import swal from "sweetalert";

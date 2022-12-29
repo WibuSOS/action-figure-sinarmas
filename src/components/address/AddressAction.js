@@ -1,8 +1,6 @@
 import React from 'react'
 import { Card, Col, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
 import './Address.css'
-
 export default function AddressAction({ }) {
     return (
         <Card className='shadow'>
@@ -32,13 +30,6 @@ export default function AddressAction({ }) {
                    </Col>                         
                 </Row>
                 <hr />
-                <Row>
-                    
-                    
-                </Row>
-                <Row className='text-center mx-2 pt-5'>
-                   
-                </Row>
             </Card.Body>
         </Card >
     )
