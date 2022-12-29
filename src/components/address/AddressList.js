@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button, Card, Col, Row } from 'react-bootstrap'
+import { Card, Col, Row } from 'react-bootstrap'
 import './Address.css'
-import { FIGURES_DIR, ICONS } from '../../const'
 
 export default function AddressList({ address, view, change }) {
     let addressList = address.map(
@@ -18,10 +17,8 @@ export default function AddressList({ address, view, change }) {
                 {address.status === "Main" && <Col className="col-sm-3">
                     
                     <p className='underline'>Main Address</p>
-
-                    <a className='underline'>Edit </a>
-             
-                    <a className='underline'>Delete</a>
+                    <p  className='underline'>Edit </p>
+                    <p  className='underline'>Delete</p>
              
                  </Col>
                 }
@@ -30,27 +27,12 @@ export default function AddressList({ address, view, change }) {
                     
                     <p className='underline'>Set as Main Address</p>
 
-                    <a className='underline'>Edit </a>
+                    <p className='underline'>Edit </p>
              
-                    <a className='underline'>Delete</a>
+                    <p className='underline'>Delete</p>
              
                  </Col>
                 }
-                {view === 'cart' && <Col className="text-center col-sm-3">
-                    <p className='underline'>Quantity</p>
-                    <Col>
-                        <Button className='cart-btn'>
-                            <img src={ICONS + 'trash.png'}></img>
-                        </Button>
-                        <Button className='cart-btn'>
-                            <img src={ICONS + 'minus.png'} ></img>
-                        </Button>
-                        
-                        <Button className='cart-btn'>
-                            <img src={ICONS + 'plus.png'}></img>
-                        </Button>
-                    </Col>
-                </Col>}
                  <hr></hr>
             </Row>
         )

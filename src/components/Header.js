@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import '../styles/custom.css'
 import { ICONS } from '../const'
@@ -14,13 +14,6 @@ export default function Header() {
     }
 
     if (localStorage.getItem('name') == null) {
-        return (
-            <nav className="navbar navbar-expand-lg background-nav">
-                <div className="container-fluid">
-                    <Link to="/" className="navbar-brand ms-5"><img src={ICONS + "profile1.png"} alt="dd" className='img-profile' /> Bandai.Com</Link>
-                </div>
-            </nav>
-        )
     }
     else {
         const logout = () => {
@@ -70,7 +63,7 @@ export default function Header() {
                                 <NavDropdown title={<img src={ICONS + "user-free-icon-font.png"} className="img-NavDropdown" alt="dd" />} id="basic-nav-dropdown" className="p-0 nav-link">
                                     <NavDropdown.Item>
                                         <Link to="/address" className='img-font'>
-                                            <img src={ICONS + "address2.png"} className='img-dropdown img-font' />Address
+                                            <img src={ICONS + "address2.png"}alt="address" className='img-dropdown img-font' />Address
                                         </Link>
                                     </NavDropdown.Item>
                                     <NavDropdown.Divider />
