@@ -1,70 +1,144 @@
 {
-	"figures": [
-		{
-			"id": 1,
-			"title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-			"sculptor": "APEX",
-			"price": 2650000,
-			"quantity": 100,
-			"source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-		},
-		{
-			"id": 2,
-			"title": "Nendoroid Yor Forger - SPY x FAMILY",
-			"sculptor": "Good Smile Company",
-			"price": 650000,
-			"quantity": 100,
-			"source": "nendoroid-yor-forger-spy-x-family.jpg"
-		},
-		{
-			"id": 3,
-			"title": "Nendoroid Yuji Itadori",
-			"sculptor": "Good Smile Company",
-			"price": 800000,
-			"quantity": 100,
-			"source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
-		},
-		{
-			"id": 4,
-			"title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-			"sculptor": "Mihoyo",
-			"price": 580000,
-			"quantity": 100,
-			"source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-		},
-		{
-			"id": 5,
-			"title": "Nendoroid Denji - Chainsaw Man",
-			"sculptor": "Good Smile Company",
-			"price": 720000,
-			"quantity": 100,
-			"source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg"
-		},
-		{
-			"id": 6,
-			"title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
-			"sculptor": "Good Smile Company",
-			"price": 720000,
-			"quantity": 100,
-			"source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
-		}
-	],
-	"profiles": [
-		{
-			"id": 1,
-			"name": "Juliana Manurung",
-			"email": "juliana@pega.com",
-			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
-			"source": "profile1.png",
-			"cart": []
-		},
-		{
-			"id": 2,
-			"name": "Julianto Manurung",
-			"email": "julianto@pega.com",
-			"address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
-			"source": "profile1.png",
-			"cart": []
-		}
-	]
+  "figures": [
+    {
+      "id": 1,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "quantity": 100,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg",
+      "date": "2021-09-27"
+    },
+    {
+      "id": 2,
+      "title": "Nendoroid Yor Forger - SPY x FAMILY",
+      "sculptor": "Good Smile Company",
+      "price": 650000,
+      "quantity": 100,
+      "source": "nendoroid-yor-forger-spy-x-family.jpg",
+      "date": "2021-09-28"
+    },
+    {
+      "id": 3,
+      "title": "Nendoroid Yuji Itadori",
+      "sculptor": "Good Smile Company",
+      "price": 800000,
+      "quantity": 100,
+      "source": "nendoroid-yuji-itadori-second-preorder-period.jpg",
+      "date": "2022-11-27"
+    },
+    {
+      "id": 4,
+      "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
+      "sculptor": "Mihoyo",
+      "price": 580000,
+      "quantity": 100,
+      "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg",
+      "date": "2022-11-28"
+    },
+    {
+      "id": 5,
+      "title": "Nendoroid Denji - Chainsaw Man",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "quantiy": 100,
+      "source": "flash-po-nendoroid-denji-chainsaw-man-re-release.jpg",
+      "date": "2022-12-27"
+    },
+    {
+      "id": 6,
+      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
+      "sculptor": "Good Smile Company",
+      "price": 720000,
+      "quantity": 100,
+      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg",
+      "date": "2022-12-28"
+    }
+  ],
+  "delivery": [
+    {
+      "id": 1,
+      "name": "Gojek",
+      "price": 12000,
+      "source": ""
+    },
+    {
+      "id": 2,
+      "name": "Grab",
+      "price": 11000,
+      "source": ""
+    },
+    {
+      "id": 3,
+      "name": "JNE",
+      "price": 10000,
+      "source": ""
+    },
+    {
+      "id": 4,
+      "name": "Ninja",
+      "price": 9000,
+      "source": ""
+    }
+  ],
+  "payment": [
+    {
+      "id": 1,
+      "name": "Sinarmas",
+      "source": ""
+    },
+    {
+      "id": 2,
+      "name": "BCA",
+      "source": ""
+    },
+    {
+      "id": 3,
+      "name": "Mandiri",
+      "source": ""
+    }
+  ],
+  "bookmark": [],
+  "cart": [],
+  "profiles": [
+    {
+      "id": 1,
+      "name": "Juliana Manurung",
+      "password": "123456",
+      "email": "juliana@pega.com",
+      "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
+      "source": "profile1.png"
+    },
+    {
+      "id": 2,
+      "name": "Julianto Manurung",
+      "password": "123456",
+      "email": "julianto@pega.com",
+      "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
+      "source": "profile1.png"
+    }
+  ],
+  "address": [
+    {
+      "id": 1,
+      "id_person": 1,
+      "province": "Jakarta Barat",
+      "city": "DKI JAKARTA",
+      "address": "Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Main"
+    },
+    {
+      "id": 2,
+      "id_person": 1,
+      "province": "Jakarta Barat",
+      "city": "DKI JAKARTA",
+      "address": "Jl Keluarga Nomor 39 A RT 003 RW 001 Palmerah Barat",
+      "name": "Rumah",
+      "phone": "0881233222",
+      "status": "Not Main"
+    }
+  ],
+  "history": []
 }
