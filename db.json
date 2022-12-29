@@ -149,6 +149,11 @@
         "price": 12000,
         "source": ""
       },
+      "payment": {
+        "id": 1,
+        "name": "Sinarmas",
+        "source": ""
+      },
       "id": 1
     },
     {
@@ -186,6 +191,11 @@
         "id": 3,
         "name": "JNE",
         "price": 10000,
+        "source": ""
+      },
+      "payment": {
+        "id": 2,
+        "name": "BCA",
         "source": ""
       },
       "id": 2
