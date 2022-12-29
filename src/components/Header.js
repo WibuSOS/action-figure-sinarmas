@@ -49,11 +49,12 @@ export default function Header() {
     }, [])
     if (localStorage.getItem('name') == null) {
         return (
-            <nav className="navbar navbar-expand-lg background-nav">
-                <div className="container-fluid">
-                    <Link to="/" className="navbar-brand ms-5"><img src={ICONS + "profile1.png"} alt="dd" className='img-profile' /> Bandai.Com</Link>
-                </div>
-            </nav>
+            <div></div>
+            // <nav className="navbar navbar-expand-lg background-nav">
+            //     <div className="container-fluid">
+            //         <Link to="/" className="navbar-brand ms-5"><img src={ICONS + "profile1.png"} alt="dd" className='img-profile' /> Bandai.Com</Link>
+            //     </div>
+            // </nav>
         )
     }
     else {

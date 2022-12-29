@@ -1,0 +1,25 @@
+.log-shadow {
+    box-shadow: 0px 25px 40px #00000033;
+    border-radius: 1rem;
+    max-width: 400px;
+    background-color: #DCDCDC;
+    
+}
+
+.img-shadow {
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    box-shadow: 0px 25px 40px #00000033;
+    border-radius: 30px;
+    
+}
+
+
+.btn-shadow:hover {
+    box-shadow: 0 8px 10px 0 rgba(0,0,0,0.1), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.text-shadow {
+    /* text-shadow: 2px 2px; */
+    color: black;
+    text-shadow:  0px 25px 40px #00000033;
+}
