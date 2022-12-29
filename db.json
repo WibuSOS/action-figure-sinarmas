@@ -55,6 +55,32 @@
       "date": "2022-12-28"
     }
   ],
+  "delivery": [
+    {
+      "id": 1,
+      "name": "Gojek",
+      "price": 12000,
+      "source": ""
+    },
+    {
+      "id": 2,
+      "name": "Grab",
+      "price": 11000,
+      "source": ""
+    },
+    {
+      "id": 3,
+      "name": "JNE",
+      "price": 10000,
+      "source": ""
+    },
+    {
+      "id": 4,
+      "name": "Ninja",
+      "price": 9000,
+      "source": ""
+    }
+  ],
   "bookmark": [
     {
       "id": 1,
