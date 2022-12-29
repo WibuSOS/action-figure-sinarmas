@@ -81,27 +81,24 @@
       "source": ""
     }
   ],
-  "bookmark": [
+  "payment": [
     {
       "id": 1,
-      "id_person": "2",
-      "id_item": 1,
-      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-      "sculptor": "APEX",
-      "price": 2650000,
-      "jumlah_barang": 1,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+      "name": "Sinarmas",
+      "source": ""
     },
     {
       "id": 2,
-      "id_person": "2",
-      "id_item": 6,
-      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
-      "sculptor": "Good Smile Company",
-      "price": 720000,
-      "jumlah_barang": 1,
-      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+      "name": "BCA",
+      "source": ""
     },
+    {
+      "id": 3,
+      "name": "Mandiri",
+      "source": ""
+    }
+  ],
+  "bookmark": [
     {
       "id": 3,
       "id_person": "1",
@@ -111,6 +108,16 @@
       "price": 650000,
       "jumlah_barang": 1,
       "source": "nendoroid-yor-forger-spy-x-family.jpg"
+    },
+    {
+      "id": 4,
+      "id_person": "2",
+      "id_item": 1,
+      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+      "sculptor": "APEX",
+      "price": 2650000,
+      "jumlah_barang": 1,
+      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
     }
   ],
   "cart": [
@@ -164,6 +171,15 @@
           "price": 800000,
           "jumlah_barang": 1,
           "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
+        },
+        {
+          "id_person": "2",
+          "id_item": 1,
+          "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
+          "sculptor": "APEX",
+          "price": 2650000,
+          "jumlah_barang": 1,
+          "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
         }
       ],
       "delivery": {
