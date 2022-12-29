@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import { Button,Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button,Image,Col,Row,Container,Card,Form, InputGroup } from "react-bootstrap";
 import axios from 'axios'
-import { API_URL } from '../const'
+import { API_URL, ICONS } from '../const'
 import swal from "sweetalert";
 import { Navigate } from 'react-router-dom';
 import {Store} from '../context/UserContext'
+import './Login.css'
 
 export default class Login extends Component {
     static contextType = Store
@@ -68,55 +68,61 @@ export default class Login extends Component {
 			})
 			.catch(error => console.log(error));  
 	};
-  render() {
-    if(this.state.login){
-        return (
-            <Navigate to="/" replace={true} />
-        )
-    }
-    // else if(localStorage.getItem('name')!=null)
-    //     {
-    //         window.location.href="/"
-    //     }
-    else{  
-        return (
-                <div>  
-                    <div className="container">      
-                        <div className='row justify-content-center' >
-                            <div className='col-md-6' >
-                                <div className='card p-4' style={{backgroundColor: "#F5F5F5"}}>
-                                    <div style={{textAlign:"center"}}>
-                                        <Image src="assets/BANDAI_SPIRITS.svg.png" width="250" />
-                                    </div>
-                                    <div style={{textAlign:"center",fontSize:"25px"}}>
-                                        <b>BANDAI.COM</b>
-                                    </div>
-                                    
-                                    <div className='form-group'>
-                                        <label></label>
-                                        <input placeholder='Username' className='form-control'onChange={this.handleUsername} value={this.state.username}></input>
-                                    </div>
+    render() {
+        if(this.state.login){
+            return (
+                <Navigate to="/" replace={true} />
+            )
+        }else {  
+                return (
+                    <div className='login-body'>
+                        <Container fluid className='login-container mb-3'>
+                            <Row className='d-flex justify-content-center align-items-center'>
+                                <Col col='12' >
+                                    <div className='my-5 mx-auto log-shadow text-center p-5' >
+                                        <Image src="assets/pega-logo.svg" width="250" height="50" />
+                                        <Card.Body className='w-100 d-flex flex-column'>
+                                            <Row>
 
-                                    <div className='form-group'>
-                                        <label></label>
-                                        <input type="password" placeholder='Password' className='form-control' onChange={this.handlePassword} value={this.state.password}></input>
+                                            <InputGroup  className="btn-shadow mb-2 mt-5" onChange={this.handleUsername} value={this.state.username}>
+                                                <InputGroup.Text id="basic-addon1" className='btn-input'><img src={ICONS + "user2.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
+                                                <Form.Control
+                                                className='btn-input'
+                                                placeholder="Username"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon1"
+                                                />
+                                            </InputGroup>
+                                            <InputGroup className="btn-shadow mb-3" onChange={this.handlePassword} value={this.state.username}>
+                                                <InputGroup.Text className='btn-input' id="basic-addon1"><img src={ICONS + "lock.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
+                                                <Form.Control
+                                                className='btn-input'
+                                                placeholder="Username"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon1"
+                                                type ="password"
+                                                />
+                                            </InputGroup>
+                                                
+                                            </Row>
+                                            <Row className='mt-1'>
+                                                <Button className='btn-shadow btn-input' size="lg" variant='Primary' style={{ backgroundColor:"#128297",color:"white"}} onClick={(e)=>this.handleSubmit(e)}>
+                                                    Login
+                                                </Button>
+                                            </Row>
+                                            <Row>
+                                                <a size="lg" href='/register' className='a-regist mt-2'>
+                                                    Register
+                                                </a>
+                                            </Row>
+                                        </Card.Body>
                                     </div>
-                                    <div className="d-grid gap-2" style={{marginTop:"25px"}}>
-                                        <Button variant="primary" size="lg" style={{backgroundColor: "#FFB13D"}} onClick={(e)=>this.handleSubmit(e)}>
-                                            Login
-                                        </Button>
-                            
-                                        <Button variant="secondary" size="lg" style={{backgroundColor: "#FFB13D"}} as={Link} to="/register">
-                                            Register
-                                        </Button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                </Col>
+                            </Row>
+                        </Container>
                     </div>
-                </div>
-
-    )
-  }
-  }
+                    
+                )
+        }
+    }
 }

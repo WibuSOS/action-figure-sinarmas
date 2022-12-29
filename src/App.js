@@ -2,11 +2,8 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Login from './pages/Login';
-import Register from './pages/Register';
 import ItemList from './components/item_list/ItemList';
-import RegisterAddress from './pages/Register/RegisterAddress';
-import RegisterPayment from './pages/Register/RegisterPayment';
-import RegisterSummary from './pages/Register/RegisterSummary';
+import Register from './pages/Register/Register';
 import Bookmark from './components/bookmark/bookmark';
 import ShopingCart from './components/shopingcart/ShopingCart';
 import Checkout from './components/checkout/Checkout';
@@ -18,10 +15,12 @@ import axios from 'axios'
 import { API_URL } from './const';
 function MultiRouter() {
   const { state,dispatch } = useStore()
+  
   useEffect(()=>{
     
     loadData()
   },[])
+
   const loadData= async()=>{
 		let jumlahCart, jumlahHistory, jumlahBookmark = 0;
 		try {
@@ -48,9 +47,6 @@ function MultiRouter() {
             <>
               <Route path="/" element={<Login />} exact />
               <Route path="/register" element={<Register />} exact />
-              <Route path="/registerAddress" element={<RegisterAddress />} exact />
-              <Route path="/registerPayment" element={<RegisterPayment />} exact />
-              <Route path="/registerSummary" element={<RegisterSummary />} exact />
             </>
           ) : (
             <>

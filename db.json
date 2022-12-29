@@ -55,88 +55,51 @@
       "date": "2022-12-28"
     }
   ],
-  "bookmark": [
+  "delivery": [
     {
       "id": 1,
-      "id_person": "2",
-      "id_item": 1,
-      "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-      "sculptor": "APEX",
-      "price": 2650000,
-      "jumlah_barang": 1,
-      "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
+      "name": "Gojek",
+      "price": 12000,
+      "source": ""
     },
     {
       "id": 2,
-      "id_person": "2",
-      "id_item": 6,
-      "title": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
-      "sculptor": "Good Smile Company",
-      "price": 720000,
-      "jumlah_barang": 1,
-      "source": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
+      "name": "Grab",
+      "price": 11000,
+      "source": ""
     },
     {
       "id": 3,
-      "id_person": "1",
-      "id_item": 2,
-      "title": "Nendoroid Yor Forger - SPY x FAMILY",
-      "sculptor": "Good Smile Company",
-      "price": 650000,
-      "jumlah_barang": 1,
-      "source": "nendoroid-yor-forger-spy-x-family.jpg"
-    }
-  ],
-  "cart": [
-    {
-      "id_person": "1",
-      "details": [
-        {
-          "id_person": "1",
-          "id_item": 1,
-          "title": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-          "sculptor": "APEX",
-          "price": 2650000,
-          "jumlah_barang": 1,
-          "source": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-        },
-        {
-          "id_person": "1",
-          "id_item": 2,
-          "title": "Nendoroid Yor Forger - SPY x FAMILY",
-          "sculptor": "Good Smile Company",
-          "price": 650000,
-          "jumlah_barang": 1,
-          "source": "nendoroid-yor-forger-spy-x-family.jpg"
-        }
-      ],
-      "id": 1
+      "name": "JNE",
+      "price": 10000,
+      "source": ""
     },
     {
-      "id_person": "2",
-      "details": [
-        {
-          "id_person": "2",
-          "id_item": 4,
-          "title": "Hu Tao Ghost Night Lamp (15x14cm) - Genshin Impact",
-          "sculptor": "Mihoyo",
-          "price": 580000,
-          "jumlah_barang": 1,
-          "source": "hu-tao-ghost-night-lamp-15x14cm-genshin-impact.jpg"
-        },
-        {
-          "id_person": "2",
-          "id_item": 3,
-          "title": "Nendoroid Yuji Itadori",
-          "sculptor": "Good Smile Company",
-          "price": 800000,
-          "jumlah_barang": 1,
-          "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
-        }
-      ],
-      "id": 2
+      "id": 4,
+      "name": "Ninja",
+      "price": 9000,
+      "source": ""
     }
   ],
+  "payment": [
+    {
+      "id": 1,
+      "name": "Sinarmas",
+      "source": ""
+    },
+    {
+      "id": 2,
+      "name": "BCA",
+      "source": ""
+    },
+    {
+      "id": 3,
+      "name": "Mandiri",
+      "source": ""
+    }
+  ],
+  "bookmark": [],
+  "cart": [],
   "profiles": [
     {
       "id": 1,
@@ -177,98 +140,5 @@
       "status": "Not Main"
     }
   ],
-  "history": [
-    {
-      "id": 1,
-      "id_person": "1",
-      "paycode": "33333",
-      "orderID": "dadasd",
-      "tanggal": "20221128",
-      "jumlah": 2,
-      "detail": [
-        {
-          "nama": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-          "jumlah": 1,
-          "harga": 2650000,
-          "gambar": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-        },
-        {
-          "nama": "Nendoroid Yor Forger - SPY x FAMILY",
-          "jumlah": 1,
-          "harga": 650000,
-          "gambar": "nendoroid-yor-forger-spy-x-family.jpg"
-        }
-      ],
-      "status": 1
-    },
-    {
-      "id": 2,
-      "id_person": "1",
-      "paycode": "33333",
-      "orderID": "dadasd",
-      "tanggal": "20221128",
-      "jumlah": 1,
-      "detail": [
-        {
-          "nama": "Nendoroid Yor Forger - SPY x FAMILY",
-          "jumlah": 1,
-          "harga": 650000,
-          "gambar": "nendoroid-yor-forger-spy-x-family.jpg"
-        }
-      ],
-      "status": 1
-    },
-    {
-      "id": 3,
-      "id_person": "1",
-      "paycode": "33333",
-      "orderID": "dadasd",
-      "tanggal": "20221128",
-      "jumlah": 3,
-      "detail": [
-        {
-          "nama": "Nendoroid Yor Forger - SPY x FAMILY",
-          "jumlah": 1,
-          "harga": 650000,
-          "gambar": "nendoroid-yor-forger-spy-x-family.jpg"
-        },
-        {
-          "nama": "Nendoroid Levi - Shingeki no Kyojin / Attack on Titan",
-          "jumlah": 1,
-          "harga": 720000,
-          "gambar": "nendoroid-levi-shingeki-no-kyojin-re-release.jpg"
-        },
-        {
-          "nama": "PVC Figure 1/7 Keqing - Driving Thunder Ver. Genshin Impact",
-          "jumlah": 1,
-          "harga": 2650000,
-          "gambar": "pvc-figure-17-keqing-driving-thunder-ver.jpg"
-        }
-      ],
-      "status": 1
-    },
-    {
-      "id": 4,
-      "id_person": "1",
-      "paycode": "33333",
-      "orderID": "dadasd",
-      "tanggal": "20221128",
-      "jumlah": 2,
-      "detail": [
-        {
-          "nama": "Nendoroid Yor Forger - SPY x FAMILY",
-          "jumlah": 1,
-          "harga": 650000,
-          "gambar": "nendoroid-yor-forger-spy-x-family.jpg"
-        },
-        {
-          "nama": "Nendoroid Yuji Itadori",
-          "jumlah": 1,
-          "harga": 800000,
-          "gambar": "nendoroid-yuji-itadori-second-preorder-period.jpg"
-        }
-      ],
-      "status": 1
-    }
-  ]
+  "history": []
 }

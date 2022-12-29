@@ -3,7 +3,7 @@ import axios from 'axios'
 import { FIGURES_URL, FIGURES_DIR, API_URL, ICONS, CART_URL } from '../../const'
 import './ItemList.css'
 import { Button, Card, Col, Container, Row } from 'react-bootstrap';
-import { ItemTab } from '../item_tab/ItemTab';
+import { ItemTab } from './ItemTab';
 import swal from 'sweetalert';
 import { Store } from '../../context/UserContext';
 import Banner from './Banner';
@@ -47,7 +47,6 @@ export default class ItemList extends Component {
 				this.setState({ cart: res.data[0].details });
 				jumlahCart = res.data[0].details.length
 			}
-
 		} catch (err) { }
 		try {
 			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
@@ -119,6 +118,17 @@ export default class ItemList extends Component {
 							source: source
 						}
 					],
+					delivery: {
+						id: 0,
+						name: "",
+						price: 0,
+						source: ""
+					},
+					payment: {
+						id: 0,
+						name: "",
+						source: ""
+					}
 				};
 				await axios.post(`${CART_URL}`, cart)
 			} else {
