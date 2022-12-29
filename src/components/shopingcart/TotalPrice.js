@@ -7,22 +7,23 @@ import { HISTORY_URL, CART_URL } from '../../const';
 import './ShopingCart.css'
 import { useStore } from '../../context/UserContext';
 
-export default function TotalPrice({ items, view, proceedBtn, id }) {
+export default function TotalPrice({ cart: { details, delivery, payment, id }, view, proceedBtn }) {
     const navigate = useNavigate();
     const { dispatch } = useStore();
 
-    const detailBarang = items.map(item => ({
+    const detailBarang = details.map(item => ({
         nama: item.title,
         jumlah: item.jumlah_barang,
         harga: item.price,
         gambar: item.source
     }));
 
-    const totalBarang = items.reduce((total, item) => (total + item.jumlah_barang), 0);
-    const totalPrice = items.reduce((total, item) => (total + (item.price * item.jumlah_barang)), 0);
-    const courierFee = 15000;
+    const totalBarang = details.reduce((total, item) => (total + item.jumlah_barang), 0);
+    const totalPrice = details.reduce((total, item) => (total + (item.price * item.jumlah_barang)), 0);
+    const courierFee = delivery.id ? delivery.price : 0;
     const VAT = 0.1;
-    const finalPrice = totalPrice + courierFee + (VAT * totalPrice);
+    const finalPriceCart = totalPrice + (VAT * totalPrice);
+    const finalPriceCheckout = totalPrice + courierFee + (VAT * totalPrice);
 
     const handleCheckout = async (e) => {
         e.preventDefault();
@@ -40,12 +41,14 @@ export default function TotalPrice({ items, view, proceedBtn, id }) {
                 const date = new Date();
                 const history = {
                     id: id_history,
-                    id_person: localStorage.getItem("id"),
+                    id_person: localStorage.getItem('id'),
                     paycode: "33333",
                     orderID: "dadasd",
                     tanggal: `${date.getFullYear()}${date.getMonth()}${date.getDate()}`,
                     jumlah: totalBarang,
                     detail: detailBarang,
+                    delivery: delivery,
+                    payment: payment,
                     status: 1
                 };
 
@@ -78,19 +81,26 @@ export default function TotalPrice({ items, view, proceedBtn, id }) {
                 <Row>
                     <Col className="col-6">Price</Col>
                     <Col className="col-6">{`Rp${totalPrice.toLocaleString('id')}`}</Col>
-                    <Col className="col-6">Courier Fee</Col>
-                    <Col className="col-6">{`Rp${courierFee.toLocaleString('id')}`}</Col>
+                    {view === 'checkout' && <Col className="col-6">Courier Fee</Col>}
+                    {view === 'checkout' && <Col className="col-6">{`Rp${courierFee.toLocaleString('id')}`}</Col>}
                     <Col className="col-6">VAT</Col>
                     <Col className="col-6">{`Rp${(VAT * totalPrice).toLocaleString('id')}`}</Col>
                 </Row>
                 <hr />
                 <Row>
                     <Col className="col-6">Final Price</Col>
-                    <Col className="col-6">{`Rp${finalPrice.toLocaleString('id')}`}</Col>
+                    {view === 'cart' && <Col className="col-6">{`Rp${finalPriceCart.toLocaleString('id')}`}</Col>}
+                    {view === 'checkout' && <Col className="col-6">{`Rp${finalPriceCheckout.toLocaleString('id')}`}</Col>}
                 </Row>
                 <Row className='text-center mx-2 pt-5'>
                     {view === 'cart' && <Link to='/checkout' className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
-                    {view === 'checkout' && <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning shadow-button'>{proceedBtn}</Link>}
+                    {view === 'checkout' &&
+                        (
+                            (delivery.id && payment.id) ?
+                                <Link to='/history' onClick={(e) => handleCheckout(e)} className='btn btn-warning shadow-button'>{proceedBtn}</Link>
+                                : <Link className='btn btn-dark shadow-button disabled'>{proceedBtn}</Link>
+                        )
+                    }
                 </Row>
             </Card.Body>
         </Card >

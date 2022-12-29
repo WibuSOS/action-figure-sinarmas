@@ -47,7 +47,6 @@ export default class ItemList extends Component {
 				this.setState({ cart: res.data[0].details });
 				jumlahCart = res.data[0].details.length
 			}
-
 		} catch (err) { }
 		try {
 			const res = await axios.get(API_URL + "/history?id_person=" + localStorage.getItem("id"))
@@ -119,6 +118,17 @@ export default class ItemList extends Component {
 							source: source
 						}
 					],
+					delivery: {
+						id: 0,
+						name: "",
+						price: 0,
+						source: ""
+					},
+					payment: {
+						id: 0,
+						name: "",
+						source: ""
+					}
 				};
 				await axios.post(`${CART_URL}`, cart)
 			} else {

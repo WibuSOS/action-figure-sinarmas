@@ -5,6 +5,8 @@ const FIGURES_URL = `${API_URL}/figures`;
 const PROFILES_URL = `${API_URL}/profiles`;
 const CART_URL = `${API_URL}/cart`;
 const HISTORY_URL = `${API_URL}/history`;
+const DELIVERY_URL = `${API_URL}/delivery`;
+const PAYMENT_URL = `${API_URL}/payment`;
 
 // DIRECTORIES
 const ASSETS_DIR = "/assets";
@@ -30,5 +32,7 @@ export {
   ICONS,
   IMAGES_CATALOG,
   RUPIAH,
-  HISTORY_URL
+  HISTORY_URL,
+  DELIVERY_URL,
+  PAYMENT_URL
 }
