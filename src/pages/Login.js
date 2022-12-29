@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Button,Image,Col,Row,Container,Card,Form } from "react-bootstrap";
+import { Button,Image,Col,Row,Container,Card,Form, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from 'axios'
-import { API_URL } from '../const'
+import { API_URL, ICONS } from '../const'
 import swal from "sweetalert";
 import { Navigate } from 'react-router-dom';
 import {Store} from '../context/UserContext'
@@ -77,19 +77,37 @@ export default class Login extends Component {
         }else {  
                 return (
                     <div className='login-body'>
-                        <Container fluid className='mt-3 mb-3'>
+                        <Container fluid className='login-container mb-3'>
                             <Row className='d-flex justify-content-center align-items-center'>
                                 <Col col='12' >
                                     <div className='my-5 mx-auto log-shadow text-center p-5' >
-                                        <Image src="assets/pega-logo.svg" width="200" height="50" />
+                                        <Image src="assets/pega-logo.svg" width="250" height="50" />
                                         <Card.Body className='w-100 d-flex flex-column'>
                                             <Row>
-                                                <input placeholder='Username' className='form-control mt-3'onChange={this.handleUsername} value={this.state.username}></input>
-                                                <input type="password" placeholder='Password' className='form-control mt-1' onChange={this.handlePassword} value={this.state.password}></input>
+
+                                            <InputGroup  className="btn-shadow mb-2 mt-5" onChange={this.handleUsername} value={this.state.username}>
+                                                <InputGroup.Text id="basic-addon1" className='btn-input'><img src={ICONS + "user2.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
+                                                <Form.Control
+                                                className='btn-input'
+                                                placeholder="Username"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon1"
+                                                />
+                                            </InputGroup>
+                                            <InputGroup className="btn-shadow mb-3" onChange={this.handlePassword} value={this.state.username}>
+                                                <InputGroup.Text className='btn-input' id="basic-addon1"><img src={ICONS + "lock.png"} alt={"dd"} style={{ width: "20px", height: "20px", }} /></InputGroup.Text>
+                                                <Form.Control
+                                                className='btn-input'
+                                                placeholder="Username"
+                                                aria-label="Username"
+                                                aria-describedby="basic-addon1"
+                                                type ="password"
+                                                />
+                                            </InputGroup>
+                                                
                                             </Row>
-                                            {/* <hr className="my-4" /> */}
-                                            <Row className='mt-2'>
-                                                <Button className='btn-shadow' size="lg" variant='Primary' style={{ backgroundColor:"#128297",color:"white"}} onClick={(e)=>this.handleSubmit(e)}>
+                                            <Row className='mt-1'>
+                                                <Button className='btn-shadow btn-input' size="lg" variant='Primary' style={{ backgroundColor:"#128297",color:"white"}} onClick={(e)=>this.handleSubmit(e)}>
                                                     Login
                                                 </Button>
                                             </Row>

@@ -153,6 +153,38 @@
       "email": "julianto@pega.com",
       "address": "Jl. Lautan Api, Bandung, Jawa Barat, Indonesia",
       "source": "profile1.png"
+    },
+    {
+      "name": "Calvin",
+      "email": "123456",
+      "password": "1234567",
+      "address": "123456",
+      "source": "profile1.png",
+      "id": 3
+    },
+    {
+      "name": "JULIANTO",
+      "email": "123456",
+      "password": "123456",
+      "address": "1",
+      "source": "profile1.png",
+      "id": 4
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "address": "",
+      "source": "profile1.png",
+      "id": 5
+    },
+    {
+      "name": "Calvin2",
+      "email": "calvin@gmail.com",
+      "password": "123456",
+      "address": "Jalan Keluarga",
+      "source": "profile1.png",
+      "id": 6
     }
   ],
   "address": [

@@ -1,14 +1,20 @@
 .log-shadow {
-    /* box-shadow: 0px 25px 40px #00000033; */
-    max-width: 450px;
-    max-height: 400px;    
-}
+    /* box-shadow: 0px 25px 40px #00000033;  */
+    max-width: 500px;
+    max-height: 400px;  
 
+}
+.login-container{
+    margin-top:100px;
+}
 .img-shadow {
     /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
     box-shadow: 0px 25px 40px #00000033;
     border-radius: 30px;
     
+}
+.btn-input{
+    border-radius: 0px;
 }
 
 .btn-shadow{
