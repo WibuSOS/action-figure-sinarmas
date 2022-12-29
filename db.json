@@ -136,6 +136,12 @@
           "source": "nendoroid-yor-forger-spy-x-family.jpg"
         }
       ],
+      "delivery": {
+        "id": 1,
+        "name": "Gojek",
+        "price": 12000,
+        "source": ""
+      },
       "id": 1
     },
     {
@@ -160,6 +166,12 @@
           "source": "nendoroid-yuji-itadori-second-preorder-period.jpg"
         }
       ],
+      "delivery": {
+        "id": 3,
+        "name": "JNE",
+        "price": 10000,
+        "source": ""
+      },
       "id": 2
     }
   ],
